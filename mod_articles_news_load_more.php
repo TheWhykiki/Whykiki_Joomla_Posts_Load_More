@@ -31,6 +31,13 @@ if($params->get('button_hover_style') == 'spin'){
 else{
 	$buttonHoverStyle = $params->get('button_hover_style')."(@color_button,".$params->get('button_hover_value')."%)";
 }
+
+if($params->get('image_filters') == "none"){
+	$imageFilters = "none";
+}
+else{
+	$imageFilters = $params->get('image_filters')."(".$params->get('image_filters_value').")";
+}
 $less = new lessc;
 $less->setVariables(array(
 	"box_height" => $params->get('box_height'),
@@ -55,7 +62,8 @@ $less->setVariables(array(
 	"border_width_button" => $params->get('border_width_button'),
 	"border_radius_button" => $params->get('border_radius_button'),
 	"button_hover_style" => $buttonHoverStyle,
-	"hover_color" => $params->get('hover_color')
+	"hover_color" => $params->get('hover_color'),
+	'image_filters' => $imageFilters
 ));
 
 $less->compileFile("modules/mod_articles_news_load_more/less/loadMore.less", "modules/mod_articles_news_load_more/css/loadMore.css");

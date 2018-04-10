@@ -129,6 +129,7 @@
   color: @font_color_button;
   padding: @button_font_size (@button_font_size)*2;
   background: @color_button;
+  border-radius: @border_radius_button;
 }
 #loadMoreButton span:hover{
   background: @button_hover_style;
@@ -169,4 +170,9 @@
 
 h3:hover, h3 a:hover, a:hover, .teaserWeiter:hover, .postWeiter:hover {
   color: @hover_color !important;
+}
+
+.blogImage, .blogImageLarger{
+  -webkit-filter: @image_filters(@image_filter_value);
+  filter: @image_filters(@image_filter_value);
 }

@@ -158,6 +158,28 @@
 					<option value="0">JNO</option>
 				</field>
 
+				<field name="image_filters" showon="image:1" type="list" default="grayscale" label="MOD_ARTICLES_NEWS_LOAD_MORE_IMAGE_FILTER_LABEL" description="MOD_ARTICLES_NEWS_LOAD_MORE_IMAGE_FILTER_DESC">
+					<option value="none">No Filter</option>
+					<option value="grayscale">Grayscale(%)</option>
+					<option value="brightness">Brightness (%)</option>
+					<option value="contrast">Contrast (%)</option>
+					<option value="hue-rotate">Hue Rotate (°)</option>
+					<option value="invert">Invert (%)</option>
+					<option value="opacity">Opacity (%)</option>
+					<option value="saturate">Saturate (%)</option>
+					<option value="sepia">Sepia (%)</option>
+				</field>
+
+				<field
+						name="image_filters_value"
+						type="number"
+						default="0"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_IMAGE_FILTER_VALUE_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_IMAGE_FILTER_VALUE_DESC"
+						showon="image:1"
+				>
+				</field>
+
 				<field
 						name="box_height"
 						type="text"
