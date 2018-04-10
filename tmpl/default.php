@@ -8,23 +8,14 @@
  */
 
 defined('_JEXEC') or die;
-
-
 ?>
-<style>
-
-
-</style>
-
-<?php 
-
+<?php
 // Article Spotlight
 
 if($spotlight == 1){
     require JModuleHelper::getLayoutPath('mod_articles_news_load_more', '_teaser');
 }
 ?>
-
 
 <div id="results">
 </div>
@@ -154,8 +145,6 @@ jQuery(document).ready(function(){
     })(jQuery);
 
 jQuery("#results").loaddata();
-    
-    
 });
 </script>
 <?php if($loadingType == 1): ?>
