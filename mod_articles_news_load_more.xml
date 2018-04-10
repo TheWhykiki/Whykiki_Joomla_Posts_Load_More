@@ -22,8 +22,10 @@
 		<filename>less.php</filename>
 	</files>
 	<languages>
-		<language tag="de-DE">languages/de-DE.mod_articles_news_load_more.ini</language>
-		<language tag="de-DE">languages/de-DE.mod_articles_news_load_more.sys.ini</language>
+		<language tag="de-DE">languages/de-DE/de-DE.mod_articles_news_load_more.ini</language>
+		<language tag="de-DE">languages/de-DE/de-DE.mod_articles_news_load_more.sys.ini</language>
+		<language tag="en-GB">languages/en-GB/en-GB.mod_articles_news_load_more.ini</language>
+		<language tag="en-GB">languages/en-GB/en-GB.mod_articles_news_load_more.sys.ini</language>
 	</languages>
 	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ARTICLES_NEWSFLASH"/>
 	<config>
