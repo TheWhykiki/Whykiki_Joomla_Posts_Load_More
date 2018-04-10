@@ -39,7 +39,7 @@ jQuery(document).ready(function(){
             var settings = jQuery.extend({
                 loading_gif_url	: '/modules/mod_articles_news_load_more/images/ajax-loader.gif', //url to loading gif
                 //end_record_text	: 'No more records found!', //no more records to load
-                data_url 		: '/modules/mod_articles_news_load_more/ajax.php', //url to PHP page
+                data_url 		: '/modules/mod_articles_news_load_more/tmpl/ajax.php', //url to PHP page
                 ordering: '<?php echo $ordering; ?>',
                 direction: '<?php echo $orderingDirection; ?>',
                 spotlight: '<?php echo $spotlight; ?>',
