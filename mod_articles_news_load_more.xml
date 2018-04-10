@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+	<name>News Articles Load More</name>
+	<author>Whykiki</author>
+	<creationDate>March 2018</creationDate>
+	<copyright>Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<authorEmail>info@whykiki.de</authorEmail>
+	<authorUrl>quasilectrisches-medieninstitut.de</authorUrl>
+	<version>1.0.0</version>
+	<description>MOD_ARTICLES_NEWS_LOAD_MORE_DESCRIPTION</description>
+	<files>
+		<filename module="mod_articles_news_load_more">mod_articles_news_load_more.php</filename>
+		<folder>tmpl</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+        <folder>css</folder>
+		<filename>helper.php</filename>
+        <filename>ajax.php</filename>
+	</files>
+	<languages>
+		<language tag="de-DE">languages/de-DE.mod_articles_news_load_more.ini</language>
+		<language tag="de-DE">languages/de-DE.mod_articles_news_load_more.sys.ini</language>
+	</languages>
+	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ARTICLES_NEWSFLASH"/>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="catid"
+					type="category"
+					label="JCATEGORY"
+					description="MOD_ARTICLES_NEWS_FIELD_CATEGORY_DESC"
+					extension="com_content"
+					multiple="false"
+					default=""
+					size="10"
+				/>
+                
+                <field
+					name="loading_type"
+					type="radio"
+					label="MOD_ARTICLES_NEWS_LOAD_MORE_LOADING_TYPE_LABEL"
+					description="MOD_ARTICLES_NEWS_LOAD_MORE_LOADING_TYPE_LABEL"
+					class="btn-group btn-group-yesno"
+					default="0"
+					>
+					<option value="1">Button</option>
+					<option value="0">Scroll</option>
+				</field>
+
+				<field
+					name="item_title"
+					type="radio"
+					label="MOD_ARTICLES_NEWS_FIELD_TITLE_LABEL"
+					description="MOD_ARTICLES_NEWS_FIELD_TITLE_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field
+					name="link_titles"
+					type="list"
+					label="MOD_ARTICLES_NEWS_FIELD_LINKTITLE_LABEL"
+					description="MOD_ARTICLES_NEWS_FIELD_LINKTITLE_DESC"
+					showon="item_title:1"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="article_spotlight"
+					type="list"
+					label="Spotlight Article"
+					description="MOD_ARTICLES_NEWS_SPOTLIGHT_DESC"
+                    default="1"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+                
+                <field
+					name="text_length_teaser"
+					type="number"
+					label="MOD_ARTICLES_NEWS_TEXT_LENGTH_TEASER_LABEL"
+					description="MOD_ARTICLES_NEWS_TEXT_LENGTH_TEASER_DESC"
+					default="200"
+                    showon="article_spotlight:1"
+				/>
+
+				<field
+					name="count"
+					type="number"
+					label="MOD_ARTICLES_NEWS_FIELD_ITEMS_LABEL"
+					description="MOD_ARTICLES_NEWS_FIELD_ITEMS_DESC"
+					default="4"
+				/>
+                
+                <field name="columns_desktop" type="list" default="4" label="MOD_ARTICLES_NEWS_LOAD_MORE_COLUMNS_DESKTOP_LABEL" description="MOD_ARTICLES_NEWS_LOAD_MORE_COLUMNS_DESKTOP_DESC">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="12">12</option>
+                </field>
+                
+                <field
+					name="text_length"
+					type="number"
+					label="MOD_ARTICLES_NEWS_TEXT_LENGTH_LABEL"
+					description="MOD_ARTICLES_NEWS_TEXT_LENGTH_DESC"
+					default="100"
+				/>
+
+				<field
+					name="ordering"
+					type="list"
+					label="MOD_ARTICLES_NEWS_FIELD_ORDERING_LABEL"
+					description="MOD_ARTICLES_NEWS_FIELD_ORDERING_DESC"
+					default="a.publish_up"
+					>
+					<option value="a.publish_up">MOD_ARTICLES_NEWS_FIELD_ORDERING_PUBLISHED_DATE</option>
+					<option value="a.created">MOD_ARTICLES_NEWS_FIELD_ORDERING_CREATED_DATE</option>
+					<option value="a.modified">MOD_ARTICLES_NEWS_FIELD_ORDERING_MODIFIED_DATE</option>
+					<option value="a.ordering">MOD_ARTICLES_NEWS_FIELD_ORDERING_ORDERING</option>
+				</field>
+
+				<field
+					name="direction"
+					type="list"
+					label="JGLOBAL_ORDER_DIRECTION_LABEL"
+					description="JGLOBAL_ORDER_DIRECTION_DESC"
+					default="1"
+					showon="ordering:a.publish_up,a.created,a.modified,a.ordering"
+					>
+					<option value="0">JGLOBAL_ORDER_ASCENDING</option>
+					<option value="1">JGLOBAL_ORDER_DESCENDING</option>
+				</field>
+			</fieldset>
+
+
+
+			<fieldset name="MOD_ARTICLES_NEWS_LOAD_MORE_STYLING">
+				<field
+						name="image"
+						type="radio"
+						label="MOD_ARTICLES_NEWS_FIELD_IMAGES_LABEL"
+						description="MOD_ARTICLES_NEWS_FIELD_IMAGES_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field
+						name="box_height"
+						type="text"
+						default="490px"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_BOX_HEIGHT_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_BOX_HEIGHT_DESC"
+						class="chzn-color"
+				>
+				</field>
+
+				<field type="spacer" name="spacer1" hr="true" />
+
+				<field
+						name="border_radius"
+						type="text"
+						default="0px"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_RADIUS_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_RADIUS_DESC"
+						class="chzn-color"
+				>
+				</field>
+
+				<field
+						name="border_color"
+						type="color"
+						default="#888"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_COLOR_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_COLOR_DESC"
+						class="chzn-color"
+				>
+				</field>
+
+				<field
+						name="border_width"
+						type="text"
+						default="1px"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_WIDTH_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_WIDTH_DESC"
+						class="chzn-color"
+						hr="true"
+				>
+				</field>
+
+				<field name="border_style" type="list" default="solid" label="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_STYLE_LABEL" description="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_STYLE_DESC">
+					<option value="solid">Solid</option>
+					<option value="dotted">Dotted</option>
+					<option value="dashed">Dashed</option>
+					<option value="double">Double</option>
+					<option value="groove">Groove</option>
+					<option value="ridge">Ridge</option>
+					<option value="inset">Inset</option>
+					<option value="outset">Outset</option>
+					<option value="initial">Initial</option>
+					<option value="inherit">INherit</option>
+					<option value="none">None</option>
+
+				</field>
+
+				<field type="spacer" name="spacer2" hr="true" />
+
+				<field
+						name="color_button"
+						type="color"
+						default="#FFFFFF"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_COLOR_BUTTON_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_COLOR_BUTTON_DESC"
+						class="chzn-color"
+						hr="true"
+						showon="loading_type:1"
+				>
+				</field>
+
+				<field
+						name="font_color_button"
+						type="color"
+						default="#000000"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_FONT_COLOR_BUTTON_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_FONT_COLOR_BUTTON_DESC"
+						showon="loading_type:1"
+				>
+				</field>
+
+				<field
+						name="button_font_size_text"
+						type="text"
+						default="20px"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_BUTTON_FONT_SIZE_TEXT_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_BUTTON_FONT_SIZE_TEXT_DESC"
+						showon="loading_type:1"
+				>
+				</field>
+
+				<field
+						name="border_color_button"
+						type="color"
+						default="#000000"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_COLOR_BUTTON_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_COLOR_BUTTON_DESC"
+						showon="loading_type:1"
+				>
+				</field>
+
+				<field
+					name="border_width_button"
+					type="text"
+					default="2px"
+					label="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_WIDTH_BUTTON_LABEL"
+					description="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_WIDTH_BUTTON_DESC"
+					showon="loading_type:1"
+					>
+				</field>
+
+				<field
+						name="border_radius_button"
+						type="text"
+						default="0px"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_RADIUS_BUTTON_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_RADIUS_BUTTON_DESC"
+						showon="loading_type:1"
+				>
+				</field>
+
+				<field type="spacer" showon="loading_type:1" name="spacer3" hr="true" />
+
+
+				<field
+						name="post_background"
+						type="color"
+						default="#FFFFFF"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_BG_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_POST_TEASER_BG_DESC"
+				>
+				</field>
+
+				<field
+						name="post_font_color"
+						type="color"
+						default="#FFFFFF"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_DESC"
+				>
+				</field>
+
+				<field
+						name="post_font_size_text"
+						type="text"
+						default="13px"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_SIZE_TEXT_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_SIZE_TEXT_DESC"
+				>
+				</field>
+
+				<field
+						name="post_font_color_headline"
+						type="color"
+						default="#FFFFFF"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_HEADLINE_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_HEADLINE_DESC"
+				>
+				</field>
+
+				<field
+						name="post_font_size_headline"
+						type="text"
+						default="16px"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_SIZE_HEADLINE_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_SIZE_HEADLINE_DESC"
+				>
+				</field>
+
+				<field type="spacer" name="spacer4" hr="true" />
+
+				<field
+						name="teaser_background"
+						type="color"
+						default="#edf2f2"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_BG_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_BG_DESC"
+						class="chzn-color"
+						showon="article_spotlight:1"
+				>
+				</field>
+
+				<field
+						name="teaser_font_color"
+						type="color"
+						default="#FFFFFF"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_COLOR_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_COLOR_DESC"
+						class="chzn-color"
+						showon="article_spotlight:1"
+				>
+				</field>
+
+				<field
+						name="teaser_font_size_text"
+						type="text"
+						default="16px"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_SIZE_TEXT_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_SIZE_TEXT_DESC"
+						showon="article_spotlight:1"
+				>
+				</field>
+
+				<field
+						name="teaser_font_color_headline"
+						type="color"
+						default="#FFFFFF"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_COLOR_HEADLINE_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_COLOR_HEADLINE_DESC"
+						class="chzn-color"
+						showon="article_spotlight:1"
+				>
+				</field>
+
+				<field
+						name="teaser_font_size_headline"
+						type="text"
+						default="24px"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_SIZE_HEADLINE_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_SIZE_HEADLINE_DESC"
+						showon="article_spotlight:1"
+				>
+				</field>
+
+			</fieldset>
+
+
+            <fieldset name="animation">
+                <field
+					name="animation"
+					type="list"
+					label="COM_MODULES_ANIMATION_FIELDSET_LABEL"
+					description="MOD_ARTICLES_NEWS_LOAD_MORE_ANIMATIONEN_DESC"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+                <field
+                        name="animation_teaser"
+                        type="list"
+                        label="MOD_ARTICLES_NEWS_LOAD_MORE_ANIMATIONEN_TEASER_LABEL"
+                        description="MOD_ARTICLES_NEWS_LOAD_MORE_ANIMATIONEN_TEASER_DESC"
+                        class="chzn-color"
+                        default="bounceInLeft"
+                        showon="animation:1"
+                >
+
+                        <option value="bounce">bounce</option>
+                        <option value="flash">flash</option>
+                        <option value="pulse">pulse</option>
+                        <option value="rubberBand">rubberBand</option>
+                        <option value="shake">shake</option>
+                        <option value="swing">swing</option>
+                        <option value="tada">tada</option>
+                        <option value="wobble">wobble</option>
+                        <option value="jello">jello</option>
+                        <option value="bounceIn">bounceIn</option>
+                        <option value="bounceInDown">bounceInDown</option>
+                        <option value="bounceInLeft">bounceInLeft</option>
+                        <option value="bounceInRight">bounceInRight</option>
+                        <option value="bounceInUp">bounceInUp</option>
+                        <option value="bounceOut">bounceOut</option>
+                        <option value="bounceOutDown">bounceOutDown</option>
+                        <option value="bounceOutLeft">bounceOutLeft</option>
+                        <option value="bounceOutRight">bounceOutRight</option>
+                        <option value="bounceOutUp">bounceOutUp</option>
+                        <option value="fadeIn">fadeIn</option>
+                        <option value="fadeInDown">fadeInDown</option>
+                        <option value="fadeInDownBig">fadeInDownBig</option>
+                        <option value="fadeInLeft">fadeInLeft</option>
+                        <option value="fadeInLeftBig">fadeInLeftBig</option>
+                        <option value="fadeInRight">fadeInRight</option>
+                        <option value="fadeInRightBig">fadeInRightBig</option>
+                        <option value="fadeInUp">fadeInUp</option>
+                        <option value="fadeInUpBig">fadeInUpBig</option>
+                        <option value="fadeOut">fadeOut</option>
+                        <option value="fadeOutDown">fadeOutDown</option>
+                        <option value="fadeOutDownBig">fadeOutDownBig</option>
+                        <option value="fadeOutLeft">fadeOutLeft</option>
+                        <option value="fadeOutLeftBig">fadeOutLeftBig</option>
+                        <option value="fadeOutRight">fadeOutRight</option>
+                        <option value="fadeOutRightBig">fadeOutRightBig</option>
+                        <option value="fadeOutUp">fadeOutUp</option>
+                        <option value="fadeOutUpBig">fadeOutUpBig</option>
+                        <option value="flip">flip</option>
+                        <option value="flipInX">flipInX</option>
+                        <option value="flipInY">flipInY</option>
+                        <option value="flipOutX">flipOutX</option>
+                        <option value="flipOutY">flipOutY</option>
+                        <option value="lightSpeedIn">lightSpeedIn</option>
+                        <option value="lightSpeedOut">lightSpeedOut</option>
+                        <option value="rotateIn">rotateIn</option>
+                        <option value="rotateInDownLeft">rotateInDownLeft</option>
+                        <option value="rotateInDownRight">rotateInDownRight</option>
+                        <option value="rotateInUpLeft">rotateInUpLeft</option>
+                        <option value="rotateInUpRight">rotateInUpRight</option>
+                        <option value="rotateOut">rotateOut</option>
+                        <option value="rotateOutDownLeft">rotateOutDownLeft</option>
+                        <option value="rotateOutDownRight">rotateOutDownRight</option>
+                        <option value="rotateOutUpLeft">rotateOutUpLeft</option>
+                        <option value="rotateOutUpRight">rotateOutUpRight</option>
+                        <option value="slideInUp">slideInUp</option>
+                        <option value="slideInDown">slideInDown</option>
+                        <option value="slideInLeft">slideInLeft</option>
+                        <option value="slideInRight">slideInRight</option>
+                        <option value="slideOutUp">slideOutUp</option>
+                        <option value="slideOutDown">slideOutDown</option>
+                        <option value="slideOutLeft">slideOutLeft</option>
+                        <option value="slideOutRight">slideOutRight</option>
+                        <option value="zoomIn">zoomIn</option>
+                        <option value="zoomInDown">zoomInDown</option>
+                        <option value="zoomInLeft">zoomInLeft</option>
+                        <option value="zoomInRight">zoomInRight</option>
+                        <option value="zoomInUp">zoomInUp</option>
+                        <option value="zoomOut">zoomOut</option>
+                        <option value="zoomOutDown">zoomOutDown</option>
+                        <option value="zoomOutLeft">zoomOutLeft</option>
+                        <option value="zoomOutRight">zoomOutRight</option>
+                        <option value="zoomOutUp">zoomOutUp</option>
+                        <option value="hinge">hinge</option>
+                        <option value="jackInTheBox">jackInTheBox</option>
+                        <option value="rollIn">rollIn</option>
+                        <option value="rollOut">rollOut</option>
+                </field>
+
+                <field
+                        name="animation_posts"
+                        type="list"
+                        label="MOD_ARTICLES_NEWS_LOAD_MORE_ANIMATIONEN_POSTS_LABEL"
+                        description="MOD_ARTICLES_NEWS_LOAD_MORE_ANIMATIONEN_POSTS_DESC"
+                        class="chzn-color"
+                        default="bounceInUp"
+                        showon="animation:1"
+                >
+
+                    <option value="bounce">bounce</option>
+                    <option value="flash">flash</option>
+                    <option value="pulse">pulse</option>
+                    <option value="rubberBand">rubberBand</option>
+                    <option value="shake">shake</option>
+                    <option value="swing">swing</option>
+                    <option value="tada">tada</option>
+                    <option value="wobble">wobble</option>
+                    <option value="jello">jello</option>
+                    <option value="bounceIn">bounceIn</option>
+                    <option value="bounceInDown">bounceInDown</option>
+                    <option value="bounceInLeft">bounceInLeft</option>
+                    <option value="bounceInRight">bounceInRight</option>
+                    <option value="bounceInUp">bounceInUp</option>
+                    <option value="bounceOut">bounceOut</option>
+                    <option value="bounceOutDown">bounceOutDown</option>
+                    <option value="bounceOutLeft">bounceOutLeft</option>
+                    <option value="bounceOutRight">bounceOutRight</option>
+                    <option value="bounceOutUp">bounceOutUp</option>
+                    <option value="fadeIn">fadeIn</option>
+                    <option value="fadeInDown">fadeInDown</option>
+                    <option value="fadeInDownBig">fadeInDownBig</option>
+                    <option value="fadeInLeft">fadeInLeft</option>
+                    <option value="fadeInLeftBig">fadeInLeftBig</option>
+                    <option value="fadeInRight">fadeInRight</option>
+                    <option value="fadeInRightBig">fadeInRightBig</option>
+                    <option value="fadeInUp">fadeInUp</option>
+                    <option value="fadeInUpBig">fadeInUpBig</option>
+                    <option value="fadeOut">fadeOut</option>
+                    <option value="fadeOutDown">fadeOutDown</option>
+                    <option value="fadeOutDownBig">fadeOutDownBig</option>
+                    <option value="fadeOutLeft">fadeOutLeft</option>
+                    <option value="fadeOutLeftBig">fadeOutLeftBig</option>
+                    <option value="fadeOutRight">fadeOutRight</option>
+                    <option value="fadeOutRightBig">fadeOutRightBig</option>
+                    <option value="fadeOutUp">fadeOutUp</option>
+                    <option value="fadeOutUpBig">fadeOutUpBig</option>
+                    <option value="flip">flip</option>
+                    <option value="flipInX">flipInX</option>
+                    <option value="flipInY">flipInY</option>
+                    <option value="flipOutX">flipOutX</option>
+                    <option value="flipOutY">flipOutY</option>
+                    <option value="lightSpeedIn">lightSpeedIn</option>
+                    <option value="lightSpeedOut">lightSpeedOut</option>
+                    <option value="rotateIn">rotateIn</option>
+                    <option value="rotateInDownLeft">rotateInDownLeft</option>
+                    <option value="rotateInDownRight">rotateInDownRight</option>
+                    <option value="rotateInUpLeft">rotateInUpLeft</option>
+                    <option value="rotateInUpRight">rotateInUpRight</option>
+                    <option value="rotateOut">rotateOut</option>
+                    <option value="rotateOutDownLeft">rotateOutDownLeft</option>
+                    <option value="rotateOutDownRight">rotateOutDownRight</option>
+                    <option value="rotateOutUpLeft">rotateOutUpLeft</option>
+                    <option value="rotateOutUpRight">rotateOutUpRight</option>
+                    <option value="slideInUp">slideInUp</option>
+                    <option value="slideInDown">slideInDown</option>
+                    <option value="slideInLeft">slideInLeft</option>
+                    <option value="slideInRight">slideInRight</option>
+                    <option value="slideOutUp">slideOutUp</option>
+                    <option value="slideOutDown">slideOutDown</option>
+                    <option value="slideOutLeft">slideOutLeft</option>
+                    <option value="slideOutRight">slideOutRight</option>
+                    <option value="zoomIn">zoomIn</option>
+                    <option value="zoomInDown">zoomInDown</option>
+                    <option value="zoomInLeft">zoomInLeft</option>
+                    <option value="zoomInRight">zoomInRight</option>
+                    <option value="zoomInUp">zoomInUp</option>
+                    <option value="zoomOut">zoomOut</option>
+                    <option value="zoomOutDown">zoomOutDown</option>
+                    <option value="zoomOutLeft">zoomOutLeft</option>
+                    <option value="zoomOutRight">zoomOutRight</option>
+                    <option value="zoomOutUp">zoomOutUp</option>
+
+                    <option value="hinge">hinge</option>
+                    <option value="jackInTheBox">jackInTheBox</option>
+                    <option value="rollIn">rollIn</option>
+                    <option value="rollOut">rollOut</option>
+                </field>
+
+                <field
+                    name="animation_speed_teaser"
+                    type="text"
+                    default="2s"
+                    label="MOD_ARTICLES_NEWS_LOAD_MORE_ANIMATIONEN_SPEED_LABEL"
+                    description="MOD_ARTICLES_NEWS_LOAD_MORE_ANIMATIONEN_SPEED_DESC"
+                    size="10"
+					showon="animation:1"
+                />
+
+                <field
+                    name="animation_delay_teaser"
+                    type="text"
+                    label="MOD_ARTICLES_NEWS_LOAD_MORE_ANIMATIONEN_DELAY_LABEL"
+                    description="MOD_ARTICLES_NEWS_LOAD_MORE_ANIMATIONEN_DELAY_DESC"
+                    size="10"
+					showon="animation:1"
+                />
+
+				<field
+						name="animation_speed_posts"
+						type="text"
+						default="2s"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_ANIMATIONEN_SPEED_POSTS_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_ANIMATIONEN_SPEED_POSTS_DESC"
+						size="10"
+						showon="animation:1"
+				/>
+
+				<field
+						name="animation_delay_posts"
+						type="text"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_ANIMATIONEN_DELAY_POSTS_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_ANIMATIONEN_DELAY_POSTS_DESC"
+						size="10"
+						showon="animation:1"
+				/>
+
+
+
+            </fieldset>
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+				/>
+
+				<field
+					name="moduleclass_sfx"
+					type="textarea" rows="3"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+				/>
+
+				<field
+					name="cache"
+					type="list"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC"
+					default="1"
+					>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="number"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+					default="900"
+				/>
+
+				<field
+					name="cachemode"
+					type="hidden"
+					default="itemid"
+					>
+					<option value="itemid"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
