@@ -19,10 +19,6 @@ JModelLegacy::addIncludePath(JPATH_SITE . '/components/com_content/models', 'Con
  * @since  1.6
  */
 
-    $app       = JFactory::getApplication();
-    $whyParams = $app->getParams();
-$counterKiki = 5;
-
 abstract class ModArticlesNewsLoadMoreHelper
 {
 
