@@ -18,7 +18,6 @@
 		<folder>less</folder>
 		<folder>languages</folder>
 		<filename>helper.php</filename>
-        <filename>ajax.php</filename>
 		<filename>less.php</filename>
 	</files>
 	<languages>
