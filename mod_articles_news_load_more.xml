@@ -15,8 +15,11 @@
 		<folder>images</folder>
 		<folder>js</folder>
         <folder>css</folder>
+		<folder>less</folder>
+		<folder>languages</folder>
 		<filename>helper.php</filename>
         <filename>ajax.php</filename>
+		<filename>less.php</filename>
 	</files>
 	<languages>
 		<language tag="de-DE">languages/de-DE.mod_articles_news_load_more.ini</language>
