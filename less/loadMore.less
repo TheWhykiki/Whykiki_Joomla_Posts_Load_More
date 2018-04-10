@@ -15,7 +15,7 @@
   margin-top: 15px;
 }
 .blogInner {
-  border: @border_width solid @border_color;
+  border: @border_width @border_style @border_color;
   background: @post_background;
   min-height: @box_height;
   position:relative;
@@ -27,14 +27,20 @@
   padding: 15px 10px 0 15px;
   margin: 0px;
 }
-.blogHeadline {
-  color: @post_font_color_headline;
+.blogHeadlinePost {
+  color: @post_font_color_headline !important;
   font-size: @post_font_size_headline;
   font-weight: 600;
   line-height: 1.3;
   padding: 0 15px;
   margin-top: -5px;
 }
+
+/*
+.blogHeadline a{
+  color: @post_font_color_headline;
+}
+*/
 .blogItemText p {
   font-size: @post_font_size_text;
   line-height: 1.8;
@@ -55,7 +61,7 @@
   background: @teaser_background;
   margin: 0px 0px 15px 0px !important;
   position:relative;
-  border: @border_width solid @border_color;
+  border: @border_width @border_style @border_color;
   border-radius: @border_radius;
 }
 .teaserImage {
@@ -104,7 +110,7 @@
 .blogHeadlineTeaser {
   font-size: @teaser_font_size_headline;
   font-weight: 600;
-  color: @teaser_font_color_headline;
+  color: @teaser_font_color_headline !important;
   line-height: 1.3;
   margin: 5px 0px 10px 0px;
 }

@@ -23,6 +23,7 @@ if($animationFlag == 1){
 else{
 	$animationClass = "";
 }
+
 ?>
 
 <div <?php if($animationFlag == 1 && $animationSpeedTeaser != ""): ?>data-wow-duration="<?php echo $animationSpeedTeaser; ?>"<?php endif; ?> <?php if($animationFlag == 1 && $animationDelayTeaser != ""): ?>data-wow-delay="<?php echo $animationDelayTeaser; ?>"<?php endif; ?> class="<?php echo $animationClass; ?> row teaserRow">

@@ -94,12 +94,16 @@ $columnsDesktop = $params->get('columns_desktop');
 $loadingType = $params->get('loading_type');
 $boxHeight = $params->get('box_height');
 $animationSpeedTeaser = $params->get('animation_speed');
-$animationDelayTeaser = $params->get('animation_delay');
+$animationDelayTeaser = $params->get('animation_delay_teaser');
 $animationSpeedPost = $params->get('animation_speed_posts');
 $animationDelayPost = $params->get('animation_delay_posts');
 $readMoreStyle = $params->get('readmore_style');
 $readMoreText = $params->get('readmore_text');
 $readMoreIconSize = $params->get('readmore_icon_size');
+
+if($readMoreText != ''){
+	$readMoreIconSize = '';
+}
 
 if($readMoreStyle == 'none'){
 	$readMoreStylePost = "";

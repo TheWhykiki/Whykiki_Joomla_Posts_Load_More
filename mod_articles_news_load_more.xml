@@ -166,7 +166,6 @@
 					<option value="none">No Filter</option>
 					<option value="grayscale">Grayscale(%)</option>
 					<option value="brightness">Brightness (%)</option>
-					<option value="contrast">Contrast (%)</option>
 					<option value="hue-rotate">Hue Rotate (°)</option>
 					<option value="invert">Invert (%)</option>
 					<option value="opacity">Opacity (%)</option>
@@ -237,12 +236,6 @@
 					<option value="fa-3x">3-fach</option>
 					<option value="fa-4x">4-fach</option>
 					<option value="fa-5x">5-fach</option>
-					<option value="fa-6x">6-fach</option>
-					<option value="fa-7x">7-fach</option>
-					<option value="fa-8x">8-fach</option>
-					<option value="fa-9x">9-fach</option>
-					<option value="fa-10x">10-fach</option>
-
 				</field>
 
 				<field type="spacer" name="spacer1" hr="true" />

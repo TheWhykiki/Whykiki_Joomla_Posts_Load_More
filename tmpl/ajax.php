@@ -84,6 +84,32 @@ $db->setQuery($query,$position,$item_per_page);
 $row = $db->loadAssocList();
 
 $colIndicator = 12/$columnsDesktop;
+switch ($colIndicator) {
+	case 1:
+        $colTablet = 12;
+        $colPhone = 12;
+		break;
+	case 2:
+		$colTablet = 6;
+		$colPhone = 12;
+		break;
+	case 3:
+		$colTablet = 6;
+		$colPhone = 12;
+		break;
+	case 4:
+		$colTablet = 6;
+		$colPhone = 12;
+		break;
+	case 6:
+		$colTablet = 6;
+		$colPhone = 12;
+		break;
+	case 12:
+		$colTablet = 3;
+		$colPhone = 6;
+		break;
+}
 
 ?>
 <?php // Getting array from helper, splitting every 4 times
@@ -104,7 +130,7 @@ foreach (array_chunk($row, $columnsDesktop) as $items): ?>
             
 
 
-        <div <?php if($animationFlag == 1 && $animationSpeedPost != ""): ?>data-wow-duration="<?php echo $animationSpeedPost; ?>"<?php endif; ?> <?php if($animationFlag == 1 && $animationDelayPost != ""): ?>data-wow-delay="<?php echo $animationDelayPost; ?>"<?php endif; ?> class="<?php echo $animationClass; ?> col-sm-<?php echo $colIndicator*2; ?> col-md-<?php echo $colIndicator; ?>  singleBlogPost">
+        <div <?php if($animationFlag == 1 && $animationSpeedPost != ""): ?>data-wow-duration="<?php echo $animationSpeedPost; ?>"<?php endif; ?> <?php if($animationFlag == 1 && $animationDelayPost != ""): ?>data-wow-delay="<?php echo $animationDelayPost; ?>"<?php endif; ?> class="<?php echo $animationClass; ?> col-xs-<?php echo $colPhone; ?> col-sm-<?php echo $colTablet; ?> col-md-<?php echo $colIndicator; ?>  singleBlogPost">
 			<div class="blogInner">
                     <?php if($imageFlag == 1): ?>
 					<img class="blogImage blogImageLarger" src="/<?php echo $introImage; ?>" />
