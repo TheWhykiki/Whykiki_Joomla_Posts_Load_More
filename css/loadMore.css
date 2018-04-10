@@ -138,3 +138,7 @@
 	font-size: 20px;
 	text-align: center;
 }
+
+h3:hover, h3 a:hover, a:hover {
+	color: @hover_color;
+}

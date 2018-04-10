@@ -43,6 +43,8 @@ else{
 }
 
 $columnsDesktop = $app->input->post->get('columnsDesktop');
+$readMoreStylePost = $_POST['readMoreStylePost'];
+$readMoreText  = $app->input->post->get('readMoreText');
 
 //throw HTTP error if page number is not valid
 if(!is_numeric($page_number)){
@@ -131,9 +133,11 @@ foreach (array_chunk($row, $columnsDesktop) as $items): ?>
 							echo substr($introText,0, $textLength);
 						?> ...
                         <?php if($linkTitles == 1): ?>
-                         <a href="<?php echo $link; ?>">
-						    <img class="weiter" src="/modules/mod_articles_news_load_more/images/weiter.png" />
-                        </a>
+                        <div class="postWeiter">
+                             <a href="<?php echo $link; ?>">
+                                <?php echo $readMoreText; ?> <?php echo $readMoreStylePost; ?>
+                            </a>
+                        </div>
                         <?php endif; ?>
 					</div>
 			</div>

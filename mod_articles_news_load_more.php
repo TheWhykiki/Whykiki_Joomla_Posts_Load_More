@@ -14,12 +14,23 @@ JLoader::register('ModArticlesNewsLoadMoreHelper', __DIR__ . '/helper.php');
 
 $document = JFactory::getDocument();
 $document->addStyleSheet('/modules/mod_articles_news_load_more/css/animate.css');
+$document->addStyleSheet('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
 
 // Load LESS Compiler and define variables
 if ( !class_exists( 'lessc' ) ) {
 	require "less.php";
 }
 
+// Define hover styles for load more button
+
+if($params->get('button_hover_style') == 'spin'){
+	$buttonHoverStyle = $params->get('button_hover_style')."(@color_button,".$params->get('button_hover_value').")";
+
+}
+else{
+	$buttonHoverStyle = $params->get('button_hover_style')."(@color_button,".$params->get('button_hover_value')."%)";
+}
 $less = new lessc;
 $less->setVariables(array(
 	"box_height" => $params->get('box_height'),
@@ -35,12 +46,16 @@ $less->setVariables(array(
 	"teaser_font_size_headline" => $params->get('teaser_font_size_headline'),
 	"teaser_font_color_headline" => $params->get('teaser_font_color_headline'),
 	"border_color" => $params->get('border_color'),
+	"border_width" => $params->get('border_width'),
 	"border_style" => $params->get('border_style'),
 	"color_button" => $params->get('color_button'),
 	"font_color_button" => $params->get('font_color_button'),
+	"button_font_size" => $params->get('button_font_size'),
 	"border_color_button" => $params->get('border_color_button'),
 	"border_width_button" => $params->get('border_width_button'),
 	"border_radius_button" => $params->get('border_radius_button'),
+	"button_hover_style" => $buttonHoverStyle,
+	"hover_color" => $params->get('hover_color')
 ));
 
 $less->compileFile("modules/mod_articles_news_load_more/less/loadMore.less", "modules/mod_articles_news_load_more/css/loadMore.css");
@@ -74,7 +89,18 @@ $animationSpeedTeaser = $params->get('animation_speed');
 $animationDelayTeaser = $params->get('animation_delay');
 $animationSpeedPost = $params->get('animation_speed_posts');
 $animationDelayPost = $params->get('animation_delay_posts');
+$readMoreStyle = $params->get('readmore_style');
+$readMoreText = $params->get('readmore_text');
+$readMoreIconSize = $params->get('readmore_icon_size');
 
+if($readMoreStyle == 'none'){
+	$readMoreStylePost = "";
+	$readMoreStyleTeaser = "";
+}
+else{
+	$readMoreStylePost = '<i class="fas '.$readMoreIconSize.' fa fa-'.$readMoreStyle.'"></i>';
+	$readMoreStyleTeaser = '<i class="fas '.$readMoreIconSize.' fa fa fa-'.$readMoreStyle.'"></i>';
+}
 // Get list of items
 
 $list            = ModArticlesNewsLoadMoreHelper::getList($params,$count);

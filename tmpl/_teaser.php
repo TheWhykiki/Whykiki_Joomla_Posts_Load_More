@@ -50,7 +50,9 @@ else{
 
 		<?php if($link_titles == 1): ?>
             <a href="<?php echo $link; ?>">
-                <img class="teaserWeiter" src="/modules/mod_articles_news_load_more/images/weiter.png" />
+                <div class="teaserWeiter">
+                    <?php echo $readMoreText; ?> <?php echo $readMoreStyleTeaser; ?>
+                </div>
             </a>
 		<?php endif; ?>
 

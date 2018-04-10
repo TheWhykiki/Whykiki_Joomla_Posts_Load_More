@@ -23,7 +23,6 @@ defined('_JEXEC') or die;
 if($spotlight == 1){
     require JModuleHelper::getLayoutPath('mod_articles_news_load_more', '_teaser');
 }
-
 ?>
 
 
@@ -66,6 +65,9 @@ jQuery(document).ready(function(){
                 columnsDesktop: '<?php echo $columnsDesktop; ?>',
                 animationSpeedPost: '<?php echo $animationSpeedPost; ?>',
                 animationDelayPost: '<?php echo $animationDelayPost; ?>',
+                readMoreStylePost: '<?php echo $readMoreStylePost; ?>',
+                readMoreIconSize: '<?php echo $readMoreIconSize; ?>',
+                readMoreText: '<?php echo $readMoreText; ?>',
                 start_page 		: 1 //initial page
             }, options);
 
@@ -126,7 +128,11 @@ jQuery(document).ready(function(){
                         'animationPosts': settings.animationPosts,
                         'animationDelayPost': settings.animationDelayPost,
                         'animationSpeedPost': settings.animationSpeedPost,
-                        'columnsDesktop': settings.columnsDesktop
+                        'columnsDesktop': settings.columnsDesktop,
+                        'readMoreStylePost': settings.readMoreStylePost,
+                        'readMoreText': settings.readMoreText,
+                        'readMoreIconSize': settings.readMoreIconSize
+
                     }, 
                             
                 function(data){ //jQuery Ajax post

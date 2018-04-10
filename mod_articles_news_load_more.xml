@@ -168,6 +168,57 @@
 				>
 				</field>
 
+				<field
+						name="hover_color"
+						type="color"
+						default="#888"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_HOVER_COLOR_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_HOVER_COLOR_DESC"
+						class="chzn-color"
+				>
+				</field>
+
+				<field
+						name="readmore_text"
+						type="text"
+						default=""
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_READMORE_TEXT_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_READMORE_TEXT_DESC"
+						class="chzn-color"
+						showon="link_titles:1"
+				>
+				</field>
+
+				<field name="readmore_style" type="list" showon="link_titles:1" default="solid" label="MOD_ARTICLES_NEWS_LOAD_MORE_READMORE_STYLE_LABEL" description="MOD_ARTICLES_NEWS_LOAD_MORE_READMORE_STYLE_DESC">
+					<option value="none">none</option>
+					<option value="chevron-right">chevron-right</option>
+					<option value="caret-right">caret-right</option>
+					<option value="angle-right">angle-right</option>
+					<option value="arrow-right">arrow-right</option>
+					<option value="chevron-circle-right">chevron-circle-right</option>
+					<option value="caret-square-right">caret-square-right</option>
+					<option value="arrow-circle-right">arrow-circle-right</option>
+					<option value="angle-double-right">angle-double-right</option>
+					<option value="long-arrow-alt-right">long-arrow-alt-right</option>
+					<option value="arrow-alt-circle-right">arrow-alt-circle-right</option>
+
+				</field>
+
+				<field name="readmore_icon_size" type="list" showon="readmore_text:" default="none" label="MOD_ARTICLES_NEWS_LOAD_MORE_READMORE_ICON_LABEL" description="MOD_ARTICLES_NEWS_LOAD_MORE_READMORE_ICON_DESC">
+					<option value="none">Keine Skalierung</option>
+					<option value="fa-2x">2-fach</option>
+					<option value="fa-3x">3-fach</option>
+					<option value="fa-4x">4-fach</option>
+					<option value="fa-5x">5-fach</option>
+					<option value="fa-6x">6-fach</option>
+					<option value="fa-7x">7-fach</option>
+					<option value="fa-8x">8-fach</option>
+					<option value="fa-9x">9-fach</option>
+					<option value="fa-10x">10-fach</option>
+
+				</field>
+
 				<field type="spacer" name="spacer1" hr="true" />
 
 				<field
@@ -244,7 +295,7 @@
 				</field>
 
 				<field
-						name="button_font_size_text"
+						name="button_font_size"
 						type="text"
 						default="20px"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_BUTTON_FONT_SIZE_TEXT_LABEL"
@@ -284,6 +335,28 @@
 				>
 				</field>
 
+				<field name="button_hover_style" showon="loading_type:1" type="list" default="lighten" label="MOD_ARTICLES_NEWS_LOAD_MORE_BUTTON_HOVER_LABEL" description="MOD_ARTICLES_NEWS_LOAD_MORE_BUTTON_HOVER_DESC">
+					<option value="lighten">Lighten</option>
+					<option value="darken">Darken</option>
+					<option value="saturate">Saturate</option>
+					<option value="desaturate">Desaturate</option>
+					<option value="fadein">Fade In</option>
+					<option value="fadeout">Fade Out</option>
+					<option value="fade">Fade</option>
+					<option value="spin">Spin</option>
+					<option value="mix">Mix</option>
+				</field>
+
+				<field
+						name="button_hover_value"
+						type="number"
+						default="20"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_BUTTON_HOVER_VALUE_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_BUTTON_HOVER_VALUE_DESC"
+						showon="loading_type:1"
+				>
+				</field>
+
 				<field type="spacer" showon="loading_type:1" name="spacer3" hr="true" />
 
 
@@ -300,7 +373,7 @@
 				<field
 						name="post_font_color"
 						type="color"
-						default="#FFFFFF"
+						default="#000000"
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_DESC"
@@ -319,7 +392,7 @@
 				<field
 						name="post_font_color_headline"
 						type="color"
-						default="#FFFFFF"
+						default="#000000"
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_HEADLINE_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_HEADLINE_DESC"
@@ -352,7 +425,7 @@
 				<field
 						name="teaser_font_color"
 						type="color"
-						default="#FFFFFF"
+						default="#000000"
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_COLOR_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_COLOR_DESC"
@@ -374,7 +447,7 @@
 				<field
 						name="teaser_font_color_headline"
 						type="color"
-						default="#FFFFFF"
+						default="#000000"
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_COLOR_HEADLINE_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_COLOR_HEADLINE_DESC"
