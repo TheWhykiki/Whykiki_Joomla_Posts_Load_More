@@ -66,6 +66,18 @@
 				</field>
 
 				<field
+						name="text_trigger"
+						type="radio"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_TEXT_TRIGGER_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_TEXT_TRIGGER_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field
 					name="link_titles"
 					type="list"
 					label="MOD_ARTICLES_NEWS_FIELD_LINKTITLE_LABEL"
@@ -222,12 +234,8 @@
 					<option value="angle-right">angle-right</option>
 					<option value="arrow-right">arrow-right</option>
 					<option value="chevron-circle-right">chevron-circle-right</option>
-					<option value="caret-square-right">caret-square-right</option>
 					<option value="arrow-circle-right">arrow-circle-right</option>
 					<option value="angle-double-right">angle-double-right</option>
-					<option value="long-arrow-alt-right">long-arrow-alt-right</option>
-					<option value="arrow-alt-circle-right">arrow-alt-circle-right</option>
-
 				</field>
 
 				<field name="readmore_icon_size" type="list" showon="readmore_text:" default="none" label="MOD_ARTICLES_NEWS_LOAD_MORE_READMORE_ICON_LABEL" description="MOD_ARTICLES_NEWS_LOAD_MORE_READMORE_ICON_DESC">

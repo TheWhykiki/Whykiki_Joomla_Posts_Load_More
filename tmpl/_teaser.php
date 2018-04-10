@@ -46,15 +46,18 @@ else{
                     <h3 class="blogHeadlineTeaser"><?php echo $item->title; ?></h3>
 				<?php endif; ?>
 			<?php endif; ?>
+            <?php if($textTrigger == 1): ?>
 			<?php echo substr($introText,0, $textLengthTeaser); ?> ...
+            <?php endif; ?>
         </div>
-
-		<?php if($link_titles == 1): ?>
-            <a href="<?php echo $link; ?>">
-                <div class="teaserWeiter">
-                    <?php echo $readMoreText; ?> <?php echo $readMoreStyleTeaser; ?>
-                </div>
-            </a>
-		<?php endif; ?>
+	    <?php if($textTrigger == 1): ?>
+            <?php if($link_titles == 1): ?>
+                <a href="<?php echo $link; ?>">
+                    <div class="teaserWeiter">
+                        <?php echo $readMoreText; ?> <?php echo $readMoreStyleTeaser; ?>
+                    </div>
+                </a>
+            <?php endif; ?>
+        <?php endif; ?>
 
     </div>

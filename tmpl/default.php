@@ -59,6 +59,7 @@ jQuery(document).ready(function(){
                 readMoreStylePost: '<?php echo $readMoreStylePost; ?>',
                 readMoreIconSize: '<?php echo $readMoreIconSize; ?>',
                 readMoreText: '<?php echo $readMoreText; ?>',
+                textTrigger: '<?php echo $textTrigger; ?>',
                 start_page 		: 1 //initial page
             }, options);
 
@@ -117,7 +118,8 @@ jQuery(document).ready(function(){
                         'columnsDesktop': settings.columnsDesktop,
                         'readMoreStylePost': settings.readMoreStylePost,
                         'readMoreText': settings.readMoreText,
-                        'readMoreIconSize': settings.readMoreIconSize
+                        'readMoreIconSize': settings.readMoreIconSize,
+                        'textTrigger': settings.textTrigger
 
                     }, 
                             

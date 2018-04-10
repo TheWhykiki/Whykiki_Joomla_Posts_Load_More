@@ -100,6 +100,8 @@ $animationDelayPost = $params->get('animation_delay_posts');
 $readMoreStyle = $params->get('readmore_style');
 $readMoreText = $params->get('readmore_text');
 $readMoreIconSize = $params->get('readmore_icon_size');
+$textTrigger = $params->get('text_trigger');
+
 
 if($readMoreText != ''){
 	$readMoreIconSize = '';

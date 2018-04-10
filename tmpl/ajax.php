@@ -45,6 +45,7 @@ else{
 $columnsDesktop = $app->input->post->get('columnsDesktop');
 $readMoreStylePost = $_POST['readMoreStylePost'];
 $readMoreText  = $app->input->post->get('readMoreText');
+$textTrigger  = $app->input->post->get('textTrigger');
 
 //throw HTTP error if page number is not valid
 if(!is_numeric($page_number)){
@@ -153,17 +154,18 @@ foreach (array_chunk($row, $columnsDesktop) as $items): ?>
                             <?php endif; ?>
                         <?php endif; ?>
                         
-                
-						<?php 
-							// Ausgabe Introtext gekürzt
-							echo substr($introText,0, $textLength);
-						?> ...
-                        <?php if($linkTitles == 1): ?>
-                        <div class="postWeiter">
-                             <a href="<?php echo $link; ?>">
-                                <?php echo $readMoreText; ?> <?php echo $readMoreStylePost; ?>
-                            </a>
-                        </div>
+                        <?php if($textTrigger == 1): ?>
+                            <?php
+                                // Ausgabe Introtext gekürzt
+                                echo substr($introText,0, $textLength);
+                            ?> ...
+                            <?php if($linkTitles == 1): ?>
+                            <div class="postWeiter">
+                                 <a href="<?php echo $link; ?>">
+                                    <?php echo $readMoreText; ?> <?php echo $readMoreStylePost; ?>
+                                </a>
+                            </div>
+                            <?php endif; ?>
                         <?php endif; ?>
 					</div>
 			</div>

@@ -128,6 +128,7 @@
   text-align: center;
   background: none;
 }
+
 #loadMoreButton span{
   border: @border_width_button @border_style @border_color_button;
   font-size: @button_font_size;
@@ -136,10 +137,13 @@
   padding: @button_font_size (@button_font_size)*2;
   background: @color_button;
   border-radius: @border_radius_button;
+  display: block;
 }
+
 #loadMoreButton span:hover{
   background: @button_hover_style;
-}  #loadMoreButton:focus, #backButton:focus {
+}
+#loadMoreButton:focus, #backButton:focus {
   outline: none;
 }
 #backButton {
