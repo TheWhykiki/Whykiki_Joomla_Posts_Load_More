@@ -81,22 +81,17 @@ jQuery(document).ready(function(){
                 contents(el, settings); //load content chunk
             });
             <?php else: ?>
-            function getOffset(el) {
-              el = el.getBoundingClientRect();
-              return {
-                top: el.top + window.scrollY
-              }
-            }
+
 
             jQuery(window).scroll(function() { //detact scroll
-
+                var scrollerHeight = jQuery( '.blogInner' ).height();
                 /*
                 console.log('scrolltop' + jQuery(window).scrollTop());
                 console.log('winheight' + jQuery(window).height());
                 console.log('aDDED' + (jQuery(window).scrollTop() + jQuery(window).height()));
                 console.log('docHeight' + jQuery(document).height()); */
 
-                if(parseInt(jQuery(window).scrollTop()+100) >= offsetTop){ //scrolled to bottom of the page
+                if(parseInt(jQuery(window).scrollTop()+scrollerHeight) >= offsetTop){ //scrolled to bottom of the page
                     contents(el, settings); //load content chunk
                 }
             });
