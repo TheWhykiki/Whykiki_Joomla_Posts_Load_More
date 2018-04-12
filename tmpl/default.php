@@ -16,8 +16,7 @@ if($spotlight == 1){
     require JModuleHelper::getLayoutPath('mod_articles_news_load_more', '_teaser');
 }
 ?>
-
-<div id="results">
+<div id="results<?php echo $module->id; ?>">
 </div>
 
 <?php // Article Spotlight Ende ?>
@@ -25,8 +24,9 @@ if($spotlight == 1){
 <script type="text/javascript">
     
 jQuery(document).ready(function(){
+
     <?php if($loadingType == 0): ?>
-        var scrollerTrigger = jQuery( ".scrollerTrigger" );
+        var scrollerTrigger = jQuery( ".scrollerTrigger<?php echo $module->id; ?>" );
         var position = scrollerTrigger.offset();
         var offsetTop = position.top;
     <?php endif; ?>
@@ -69,7 +69,7 @@ jQuery(document).ready(function(){
             contents(el, settings); //initial data load
 
             <?php if($loadingType == 1): ?>
-            jQuery( "#loadMoreButton" ).click(function() {
+            jQuery( ".loadMoreButton<?php echo $module->id; ?>" ).click(function() {
                 contents(el, settings); //load content chunk
             });
             <?php else: ?>
@@ -77,11 +77,6 @@ jQuery(document).ready(function(){
 
             jQuery(window).scroll(function() { //detact scroll
                 var scrollerHeight = jQuery( '.blogInner' ).height();
-                /*
-                console.log('scrolltop' + jQuery(window).scrollTop());
-                console.log('winheight' + jQuery(window).height());
-                console.log('aDDED' + (jQuery(window).scrollTop() + jQuery(window).height()));
-                console.log('docHeight' + jQuery(document).height()); */
 
                 if(parseInt(jQuery(window).scrollTop()+scrollerHeight) >= offsetTop){ //scrolled to bottom of the page
                     contents(el, settings); //load content chunk
@@ -146,20 +141,20 @@ jQuery(document).ready(function(){
 
     })(jQuery);
 
-jQuery("#results").loaddata();
+jQuery("#results<?php echo $module->id; ?>").loaddata();
 });
 </script>
 <?php if($loadingType == 1): ?>
-<div class="row row-fluid loadMoreButtonRow">
-	 <div class="col-md-12 span12">
-		<button id="loadMoreButton"><span><?php echo JText::_("MOD_ARTICLES_NEWS_LOAD_MORE_LOAD_RECORDS"); ?></span></button>
+<div class="row loadMoreButtonRow loadMoreButtonRow<?php echo $module->id; ?>">
+	 <div class="col-md-12">
+		<button id="loadMoreButton" class="loadMoreButton<?php echo $module->id; ?>"><span><?php echo JText::_("MOD_ARTICLES_NEWS_LOAD_MORE_LOAD_RECORDS"); ?></span></button>
 	</div>
 </div>
 <?php else: ?>
-<div class="scrollerTrigger" style="visibility: hidden;">Trigger</div>
+<div class="scrollerTrigger<?php echo $module->id; ?> scrollerTrigger" style="visibility: hidden;">Trigger</div>
 <?php endif; ?>
 
-<div class="row row-fluid endRecordRow" style="display: none;">
+<div class="row endRecordRow<?php echo $module->id; ?> endRecordRow" style="display: none;">
     <div class="col-md-12">
         <?php echo JText::_("MOD_ARTICLES_NEWS_LOAD_MORE_NO_MORE_RECORDS"); ?>
     </div>
