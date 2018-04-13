@@ -7,7 +7,7 @@
 	<license>GNU General Public License version 2 or later;</license>
 	<authorEmail>info@whykiki.de</authorEmail>
 	<authorUrl>quasilectrisches-medieninstitut.de</authorUrl>
-	<version>1.0.4</version>
+	<version>1.0.5</version>
 	<description>MOD_ARTICLES_NEWS_LOAD_MORE_DESCRIPTION</description>
 	<updateservers>
 		<server type="extension" name="News Articles Load More" priority="1">http://downloads.whykiki.rocks/updateLoadMore.xml</server>
