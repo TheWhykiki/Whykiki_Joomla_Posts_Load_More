@@ -24,10 +24,10 @@
 		<filename>less.php</filename>
 	</files>
 	<languages>
-		<language tag="de-DE">language/de-DE/de-DE.mod_articles_news_load_more.ini</language>
-		<language tag="de-DE">language/de-DE/de-DE.mod_articles_news_load_more.sys.ini</language>
-		<language tag="en-GB">language/en-GB/en-GB.mod_articles_news_load_more.ini</language>
-		<language tag="en-GB">language/en-GB/en-GB.mod_articles_news_load_more.sys.ini</language>
+		<language tag="de-DE">languages/de-DE/de-DE.mod_articles_news_load_more.ini</language>
+		<language tag="de-DE">languages/de-DE/de-DE.mod_articles_news_load_more.sys.ini</language>
+		<language tag="en-GB">languages/en-GB/en-GB.mod_articles_news_load_more.ini</language>
+		<language tag="en-GB">languages/en-GB/en-GB.mod_articles_news_load_more.sys.ini</language>
 	</languages>
 	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ARTICLES_NEWSFLASH"/>
 	<config>
@@ -52,7 +52,7 @@
 					label="MOD_ARTICLES_NEWS_LOAD_MORE_LOADING_TYPE_LABEL"
 					description="MOD_ARTICLES_NEWS_LOAD_MORE_LOADING_TYPE_LABEL"
 					class="btn-group btn-group-yesno"
-					default="0"
+					default="1"
 					>
 					<option value="1">Button</option>
 					<option value="0">Scroll</option>
@@ -111,6 +111,7 @@
 					label="MOD_ARTICLES_NEWS_FIELD_LINKTITLE_LABEL"
 					description="MOD_ARTICLES_NEWS_FIELD_LINKTITLE_DESC"
 					showon="item_title:1"
+					default="1"
 					>
 					<option value="1">MOD_ARTICLES_NEWS_LOAD_MORE_YES</option>
 					<option value="0">MOD_ARTICLES_NEWS_LOAD_MORE_NO</option>
@@ -228,7 +229,7 @@
 				<field
 						name="box_height"
 						type="text"
-						default="490px"
+						default="520px"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_BOX_HEIGHT_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_BOX_HEIGHT_DESC"
 				>
@@ -237,7 +238,7 @@
 				<field
 						name="hover_color"
 						type="color"
-						default="#888"
+						default="rgba(0, 0, 0, 1)"
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_HOVER_COLOR_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_HOVER_COLOR_DESC"
@@ -254,7 +255,7 @@
 				>
 				</field>
 
-				<field name="readmore_style" type="list" showon="link_titles:1" default="solid" label="MOD_ARTICLES_NEWS_LOAD_MORE_READMORE_STYLE_LABEL" description="MOD_ARTICLES_NEWS_LOAD_MORE_READMORE_STYLE_DESC">
+				<field name="readmore_style" type="list" showon="link_titles:1" default="angle-double-right" label="MOD_ARTICLES_NEWS_LOAD_MORE_READMORE_STYLE_LABEL" description="MOD_ARTICLES_NEWS_LOAD_MORE_READMORE_STYLE_DESC">
 					<option value="none">none</option>
 					<option value="chevron-right">chevron-right</option>
 					<option value="caret-right">caret-right</option>
@@ -275,7 +276,6 @@
 
 				<field type="spacer" showon="box_shadow:1" label="MOD_ARTICLES_NEWS_LOAD_MORE_HEADLINE_BORDER_RADIUS" />
 
-
 				<field
 						name="border_radius"
 						type="text"
@@ -288,7 +288,7 @@
 				<field
 						name="border_color"
 						type="color"
-						default="#888"
+						default="rgba(168, 165, 165, 1)"
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_COLOR_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_COLOR_DESC"
@@ -326,7 +326,7 @@
 				<field
 						name="color_button"
 						type="color"
-						default="#FFFFFF"
+						default="rgba(255, 255, 255, 1)"
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_COLOR_BUTTON_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_COLOR_BUTTON_DESC"
@@ -338,7 +338,7 @@
 				<field
 						name="font_color_button"
 						type="color"
-						default="#000000"
+						default="rgba(0, 0, 0, 1)"
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_FONT_COLOR_BUTTON_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_FONT_COLOR_BUTTON_DESC"
@@ -359,7 +359,7 @@
 				<field
 						name="border_color_button"
 						type="color"
-						default="#000000"
+						default="rgba(0, 0, 0, 1)"
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_COLOR_BUTTON_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_COLOR_BUTTON_DESC"
@@ -387,7 +387,7 @@
 				>
 				</field>
 
-				<field name="button_hover_style" showon="loading_type:1" type="list" default="lighten" label="MOD_ARTICLES_NEWS_LOAD_MORE_BUTTON_HOVER_LABEL" description="MOD_ARTICLES_NEWS_LOAD_MORE_BUTTON_HOVER_DESC">
+				<field name="button_hover_style" showon="loading_type:1" type="list" default="darken" label="MOD_ARTICLES_NEWS_LOAD_MORE_BUTTON_HOVER_LABEL" description="MOD_ARTICLES_NEWS_LOAD_MORE_BUTTON_HOVER_DESC">
 					<option value="lighten">Lighten</option>
 					<option value="darken">Darken</option>
 					<option value="saturate">Saturate</option>
@@ -415,7 +415,7 @@
 				<field
 						name="post_background"
 						type="color"
-						default="#FFFFFF"
+						default="rgba(255, 255, 255, 1)"
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_BG_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_POST_TEASER_BG_DESC"
@@ -425,7 +425,7 @@
 				<field
 						name="post_font_color"
 						type="color"
-						default="#000000"
+						default="rgba(0, 0, 0, 0.73)"
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_DESC"
@@ -435,7 +435,7 @@
 				<field
 						name="post_font_size_text"
 						type="text"
-						default="13px"
+						default="14px"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_SIZE_TEXT_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_SIZE_TEXT_DESC"
 				>
@@ -444,7 +444,7 @@
 				<field
 						name="post_font_color_headline"
 						type="color"
-						default="#000000"
+						default="rgba(255, 0, 0, 1)"
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_HEADLINE_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_HEADLINE_DESC"
@@ -465,7 +465,7 @@
 						type="radio"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_BOX_SHADOW_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_BOX_SHADOW_DESC"
-						default="1"
+						default="0"
 				>
 					<option value="1">MOD_ARTICLES_NEWS_LOAD_MORE_YES</option>
 					<option value="0">MOD_ARTICLES_NEWS_LOAD_MORE_NO</option>
@@ -529,7 +529,7 @@
 				<field
 						name="teaser_background"
 						type="color"
-						default="#edf2f2"
+						default="rgba(201, 201, 201, 1)"
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_BG_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_BG_DESC"
@@ -541,7 +541,7 @@
 				<field
 						name="teaser_font_color"
 						type="color"
-						default="#000000"
+						default="rgba(0, 0, 0, 0.64)"
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_COLOR_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_COLOR_DESC"
@@ -563,7 +563,7 @@
 				<field
 						name="teaser_font_color_headline"
 						type="color"
-						default="#000000"
+						default="rgba(255, 0, 0, 1)"
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_COLOR_HEADLINE_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_TEASER_FONT_COLOR_HEADLINE_DESC"
