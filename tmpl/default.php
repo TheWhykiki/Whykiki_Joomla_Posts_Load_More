@@ -77,10 +77,19 @@ jQuery(document).ready(function(){
 
 
             jQuery(window).scroll(function() { //detact scroll
+                var scrollerTrigger = jQuery( ".scrollerTrigger<?php echo $module->id; ?>" );
+                var position = scrollerTrigger.offset();
+                var offsetTop = position.top;
                 var scrollerHeight = jQuery( '.blogInner' ).height();
+                console.log(scrollerHeight);
+                console.log('Trig ' + offsetTop);
+                var offsetter = parseInt(jQuery(window).scrollTop()) + parseInt(scrollerHeight*10);
 
-                if(parseInt(jQuery(window).scrollTop()+scrollerHeight) >= offsetTop){ //scrolled to bottom of the page
+                console.log('Scroll ' + offsetter);
+
+                if( offsetter >= offsetTop){ //scrolled to bottom of the page
                     contents(el, settings); //load content chunk
+
                 }
             });
             <?php endif; ?>

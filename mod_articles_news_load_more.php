@@ -144,15 +144,25 @@ else{
 // Get list of items
 
 $list            = ModArticlesNewsLoadMoreHelper::getList($params,$count);
+$menuItem            = ModArticlesNewsLoadMoreHelper::getMenuItems($params);
 
 // Get base link
 $item = $list[0];
-
 $id = $item->catid;
 $replaceSlug = "?id=".$id;
-$baseLink = str_replace($replaceSlug, "", $item->link);
+
+if($params->get('base_item_trigger') == 0){
+	$baseLink = str_replace($replaceSlug, "", $item->link);
+}
+else{
+	$baseLink = $menuItem;
+}
+
+
+
 $slug = $item->id . '-' . $item->alias;
 $link = $baseLink."/".$slug;
+
 
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');
 

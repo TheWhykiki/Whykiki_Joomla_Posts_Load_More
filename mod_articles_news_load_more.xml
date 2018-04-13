@@ -101,7 +101,7 @@
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_DATEFORMAT_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_DATEFORMAT_DESC"
 						class="chzn-color"
-						showon="link_titles:1"
+						showon="date_trigger:1"
 				>
 				</field>
 
@@ -116,6 +116,27 @@
 					<option value="1">MOD_ARTICLES_NEWS_LOAD_MORE_YES</option>
 					<option value="0">MOD_ARTICLES_NEWS_LOAD_MORE_NO</option>
 				</field>
+
+				<field
+						name="base_item_trigger"
+						type="radio"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_BASEITEM_TRIGGER_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_BASEITEM_TRIGGER_DESC"
+						default="0"
+						showon="link_titles:1"
+				>
+					<option value="1">MOD_ARTICLES_NEWS_LOAD_MORE_YES</option>
+					<option value="0">MOD_ARTICLES_NEWS_LOAD_MORE_NO</option>
+				</field>
+
+				<field
+						name="base_item"
+						type="menuitem"
+						default="none"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_BASEITEM_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_BASEITEM_DESC"
+						showon="link_titles:1"
+				/>
 
 				<field
 					name="article_spotlight"

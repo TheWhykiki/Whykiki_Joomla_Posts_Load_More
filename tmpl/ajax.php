@@ -75,9 +75,12 @@ if($spotlight == 1){
 
 
 
-$query->select('a.*, b.*');
+// When loading with fields
+//$query->select('a.*, b.*');
+$query->select('a.*');
 $query->from($db->quoteName('#__content', 'a'));
-$query->join('LEFT', $db->quoteName('#__fields_values', 'b') . ' ON (' . $db->quoteName('a.id') . ' = ' . $db->quoteName('b.item_id') . ')');
+// When loading with fields
+//$query->join('LEFT', $db->quoteName('#__fields_values', 'b') . ' ON (' . $db->quoteName('a.id') . ' = ' . $db->quoteName('b.item_id') . ')');
 if($spotlight == 1){
     $query->where($db->quoteName('id')." != ".$db->quote($lastID));
 }
