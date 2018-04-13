@@ -20,6 +20,9 @@
   min-height: @box_height;
   position:relative;
   border-radius: @border_radius;
+  box-shadow: @boxShadow;
+  -webkit-box-shadow: @boxShadow;
+  -moz-box-shadow: @boxShadow;
 }
 .newsDate {
   font-size: @post_font_size_headline - 4px;
@@ -60,6 +63,9 @@
   position:relative;
   border: @border_width @border_style @border_color;
   border-radius: @border_radius;
+  box-shadow: @boxShadow;
+  -webkit-box-shadow: @boxShadow;
+  -moz-box-shadow: @boxShadow;
 }
 .teaserImage {
   padding-left: 0px !important;
@@ -91,18 +97,24 @@
 .blogHeadlinePost {
   font-size: @post_font_size_headline;
   font-weight: 600;
-  color: #000;
+  color: @post_font_color_headline !important;
   line-height: 1.3;
   padding: 0px 15px;
   margin: 0px 0px 10px 0px;
 }
 
+.blogHeadlinePost a {
+  color: @post_font_color_headline !important;
+}
 .blogHeadlineTeaser {
   font-size: @teaser_font_size_headline;
   font-weight: 600;
   color: @teaser_font_color_headline !important;
   line-height: 1.3;
   margin: 5px 0px 10px 0px;
+}
+.blogHeadlineTeaser a{
+  color: @teaser_font_color_headline !important;
 }
 .teaserDate{
   display: block;
@@ -168,7 +180,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-h3:hover, h3 a:hover, a:hover, .teaserWeiter:hover, .postWeiter:hover {
+h3 a:hover, a:hover, .teaserWeiter:hover, .postWeiter:hover {
   color: @hover_color !important;
 }
 

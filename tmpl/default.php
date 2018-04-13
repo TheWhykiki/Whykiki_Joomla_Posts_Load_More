@@ -38,12 +38,11 @@ jQuery(document).ready(function(){
         jQuery.fn.loaddata = function(options) {// Settings
             var settings = jQuery.extend({
                 loading_gif_url	: '/modules/mod_articles_news_load_more/images/ajax-loader.gif', //url to loading gif
-                //end_record_text	: 'No more records found!', //no more records to load
                 data_url 		: '/modules/mod_articles_news_load_more/tmpl/ajax.php', //url to PHP page
                 ordering: '<?php echo $ordering; ?>',
                 direction: '<?php echo $orderingDirection; ?>',
                 spotlight: '<?php echo $spotlight; ?>',
-                category: '<?php echo $categoryID; ?>',
+                catsString: '<?php echo $catsString; ?>',
                 articleCount: '<?php echo $count; ?>',
                 baseLink: '<?php echo $baseLink; ?>',
                 titleFlag: '<?php echo $titleFlag; ?>',
@@ -60,6 +59,8 @@ jQuery(document).ready(function(){
                 readMoreIconSize: '<?php echo $readMoreIconSize; ?>',
                 readMoreText: '<?php echo $readMoreText; ?>',
                 textTrigger: '<?php echo $textTrigger; ?>',
+                dateTrigger: '<?php echo $dateTrigger; ?>',
+                dateFormat: '<?php echo $dateFormat; ?>',
                 start_page 		: 1 //initial page
             }, options);
 
@@ -114,7 +115,10 @@ jQuery(document).ready(function(){
                         'readMoreStylePost': settings.readMoreStylePost,
                         'readMoreText': settings.readMoreText,
                         'readMoreIconSize': settings.readMoreIconSize,
-                        'textTrigger': settings.textTrigger
+                        'textTrigger': settings.textTrigger,
+                        'catsString': settings.catsString,
+                        'dateTrigger': settings.dateTrigger,
+                        'dateFormat': settings.dateFormat
 
                     }, 
                             

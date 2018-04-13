@@ -38,9 +38,11 @@ else{
 			<?php if ($params->get('item_title')) : ?>
 				<?php if ($params->get('link_titles','1')) : ?>
                     <span class="teaserDate"><?php echo $date; ?></span>
-                    <a href="<?php echo $link; ?>">
-                        <h3 class="blogHeadlineTeaser"><?php echo $item->title; ?></h3>
-                    </a>
+                    <h3 class="blogHeadlineTeaser">
+                        <a href="<?php echo $link; ?>">
+                            <?php echo $item->title; ?>
+                        </a>
+                    </h3>
 				<?php else : ?>
                     <span class="teaserDate"><?php echo $date; ?></span>
                     <h3 class="blogHeadlineTeaser"><?php echo $item->title; ?></h3>

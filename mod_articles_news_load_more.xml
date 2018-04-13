@@ -24,10 +24,10 @@
 		<filename>less.php</filename>
 	</files>
 	<languages>
-		<language tag="de-DE">languages/de-DE/de-DE.mod_articles_news_load_more.ini</language>
-		<language tag="de-DE">languages/de-DE/de-DE.mod_articles_news_load_more.sys.ini</language>
-		<language tag="en-GB">languages/en-GB/en-GB.mod_articles_news_load_more.ini</language>
-		<language tag="en-GB">languages/en-GB/en-GB.mod_articles_news_load_more.sys.ini</language>
+		<language tag="de-DE">language/de-DE/de-DE.mod_articles_news_load_more.ini</language>
+		<language tag="de-DE">language/de-DE/de-DE.mod_articles_news_load_more.sys.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.mod_articles_news_load_more.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.mod_articles_news_load_more.sys.ini</language>
 	</languages>
 	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_ARTICLES_NEWSFLASH"/>
 	<config>
@@ -39,11 +39,13 @@
 					label="JCATEGORY"
 					description="MOD_ARTICLES_NEWS_FIELD_CATEGORY_DESC"
 					extension="com_content"
-					multiple="false"
+					multiple="true"
 					default=""
 					size="10"
 				/>
-                
+
+				<field type="spacer" showon="box_shadow:1" label="MOD_ARTICLES_NEWS_LOAD_MORE_HEADLINE_CONTROL_BUTTON" />
+
                 <field
 					name="loading_type"
 					type="radio"
@@ -64,8 +66,8 @@
 					class="btn-group btn-group-yesno"
 					default="1"
 					>
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+					<option value="1">MOD_ARTICLES_NEWS_LOAD_MORE_YES</option>
+					<option value="0">MOD_ARTICLES_NEWS_LOAD_MORE_NO</option>
 				</field>
 
 				<field
@@ -76,8 +78,31 @@
 						class="btn-group btn-group-yesno"
 						default="1"
 				>
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+					<option value="1">MOD_ARTICLES_NEWS_LOAD_MORE_YES</option>
+					<option value="0">MOD_ARTICLES_NEWS_LOAD_MORE_NO</option>
+				</field>
+
+				<field
+						name="date_trigger"
+						type="radio"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_DATE_TRIGGER_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_DATE_TRIGGER_DESC"
+						class="btn-group btn-group-yesno"
+						default="1"
+				>
+					<option value="1">MOD_ARTICLES_NEWS_LOAD_MORE_YES</option>
+					<option value="0">MOD_ARTICLES_NEWS_LOAD_MORE_NO</option>
+				</field>
+
+				<field
+						name="dateformat"
+						type="text"
+						default="d.m.Y"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_DATEFORMAT_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_DATEFORMAT_DESC"
+						class="chzn-color"
+						showon="link_titles:1"
+				>
 				</field>
 
 				<field
@@ -87,8 +112,8 @@
 					description="MOD_ARTICLES_NEWS_FIELD_LINKTITLE_DESC"
 					showon="item_title:1"
 					>
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
+					<option value="1">MOD_ARTICLES_NEWS_LOAD_MORE_YES</option>
+					<option value="0">MOD_ARTICLES_NEWS_LOAD_MORE_NO</option>
 				</field>
 
 				<field
@@ -98,10 +123,12 @@
 					description="MOD_ARTICLES_NEWS_SPOTLIGHT_DESC"
                     default="1"
 					>
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
+					<option value="1">MOD_ARTICLES_NEWS_LOAD_MORE_YES</option>
+					<option value="0">MOD_ARTICLES_NEWS_LOAD_MORE_NO</option>
 				</field>
-                
+
+				<field type="spacer" label="MOD_ARTICLES_NEWS_LOAD_MORE_HEADLINE_ARTICLE_CONTROL" />
+
                 <field
 					name="text_length_teaser"
 					type="number"
@@ -173,8 +200,8 @@
 						class="btn-group btn-group-yesno"
 						default="1"
 				>
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
+					<option value="1">MOD_ARTICLES_NEWS_LOAD_MORE_YES</option>
+					<option value="0">MOD_ARTICLES_NEWS_LOAD_MORE_NO</option>
 				</field>
 
 				<field name="image_filters" showon="image:1" type="list" default="grayscale" label="MOD_ARTICLES_NEWS_LOAD_MORE_IMAGE_FILTER_LABEL" description="MOD_ARTICLES_NEWS_LOAD_MORE_IMAGE_FILTER_DESC">
@@ -204,7 +231,6 @@
 						default="490px"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_BOX_HEIGHT_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_BOX_HEIGHT_DESC"
-						class="chzn-color"
 				>
 				</field>
 
@@ -215,7 +241,6 @@
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_HOVER_COLOR_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_HOVER_COLOR_DESC"
-						class="chzn-color"
 				>
 				</field>
 
@@ -225,7 +250,6 @@
 						default=""
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_READMORE_TEXT_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_READMORE_TEXT_DESC"
-						class="chzn-color"
 						showon="link_titles:1"
 				>
 				</field>
@@ -249,7 +273,8 @@
 					<option value="fa-5x">5-fach</option>
 				</field>
 
-				<field type="spacer" name="spacer1" hr="true" />
+				<field type="spacer" showon="box_shadow:1" label="MOD_ARTICLES_NEWS_LOAD_MORE_HEADLINE_BORDER_RADIUS" />
+
 
 				<field
 						name="border_radius"
@@ -257,7 +282,6 @@
 						default="0px"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_RADIUS_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_RADIUS_DESC"
-						class="chzn-color"
 				>
 				</field>
 
@@ -268,7 +292,6 @@
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_COLOR_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_COLOR_DESC"
-						class="chzn-color"
 				>
 				</field>
 
@@ -278,7 +301,6 @@
 						default="1px"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_WIDTH_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_WIDTH_DESC"
-						class="chzn-color"
 						hr="true"
 				>
 				</field>
@@ -298,7 +320,8 @@
 
 				</field>
 
-				<field type="spacer" name="spacer2" hr="true" />
+				<field type="spacer" showon="loading_type:1" label="MOD_ARTICLES_NEWS_LOAD_MORE_HEADLINE_LOAD_MORE" />
+
 
 				<field
 						name="color_button"
@@ -307,7 +330,6 @@
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_COLOR_BUTTON_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_COLOR_BUTTON_DESC"
-						class="chzn-color"
 						hr="true"
 						showon="loading_type:1"
 				>
@@ -387,7 +409,7 @@
 				>
 				</field>
 
-				<field type="spacer" showon="loading_type:1" name="spacer3" hr="true" />
+				<field type="spacer" label="MOD_ARTICLES_NEWS_LOAD_MORE_HEADLINE_POSTS" />
 
 
 				<field
@@ -438,7 +460,71 @@
 				>
 				</field>
 
-				<field type="spacer" name="spacer4" hr="true" />
+				<field
+						name="box_shadow"
+						type="radio"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_BOX_SHADOW_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_BOX_SHADOW_DESC"
+						default="1"
+				>
+					<option value="1">MOD_ARTICLES_NEWS_LOAD_MORE_YES</option>
+					<option value="0">MOD_ARTICLES_NEWS_LOAD_MORE_NO</option>
+				</field>
+
+				<field type="spacer" showon="box_shadow:1" label="MOD_ARTICLES_NEWS_LOAD_MORE_HEADLINE_BOXSHADOW" />
+
+				<field
+						name="shadow_color"
+						type="color"
+						default="rgba(255, 255, 255, 1)"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_SHADOW_COLOR_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_SHADOW_COLOR_DESC"
+						showon="box_shadow:1"
+				>
+				</field>
+
+				<field
+						name="shadow_h"
+						type="number"
+						default="4"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_SHADOW_H_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_SHADOW_H_DESC"
+						showon="box_shadow:1"
+				>
+				</field>
+
+				<field
+						name="shadow_v"
+						type="number"
+						default="4"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_SHADOW_V_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_SHADOW_V_DESC"
+						showon="box_shadow:1"
+				>
+				</field>
+
+				<field
+						name="shadow_blur"
+						type="number"
+						default="4"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_SHADOW_BLUR_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_SHADOW_BLUR_DESC"
+						showon="box_shadow:1"
+				>
+				</field>
+
+				<field
+						name="shadow_spread"
+						type="number"
+						default="4"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_SHADOW_SPREAD_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_SHADOW_SPREAD_DESC"
+						showon="box_shadow:1"
+				>
+				</field>
+
+				<field type="spacer" showon="article_spotlight:1" label="MOD_ARTICLES_NEWS_LOAD_MORE_HEADLINE_SPOTLIGHT" />
 
 				<field
 						name="teaser_background"
@@ -506,8 +592,8 @@
 					label="COM_MODULES_ANIMATION_FIELDSET_LABEL"
 					description="MOD_ARTICLES_NEWS_LOAD_MORE_ANIMATIONEN_DESC"
 					>
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
+					<option value="1">MOD_ARTICLES_NEWS_LOAD_MORE_YES</option>
+					<option value="0">MOD_ARTICLES_NEWS_LOAD_MORE_NO</option>
 				</field>
 
                 <field

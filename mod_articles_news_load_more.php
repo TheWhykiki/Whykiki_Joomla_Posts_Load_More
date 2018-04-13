@@ -38,6 +38,22 @@ if($params->get('image_filters') == "none"){
 else{
 	$imageFilters = $params->get('image_filters')."(".$params->get('image_filters_value').")";
 }
+
+// Define Box Shadows
+$boxShadowTrigger = $params->get('box_shadow');
+$shadowH = $params->get('shadow_h');
+$shadowV = $params->get('shadow_v');
+$shadowColor = $params->get('shadow_color');
+$shadowBlur = $params->get('shadow_blur');
+$shadowSpread = $params->get('shadow_spread');
+
+if($boxShadowTrigger == 1){
+	$boxShadow =   $shadowH."px ".$shadowV."px ".$shadowBlur."px ".$shadowSpread."px ".$shadowColor.";";
+}
+else{
+	$boxShadow = "none";
+}
+
 $less = new lessc;
 $less->setVariables(array(
 	"box_height" => $params->get('box_height'),
@@ -63,7 +79,8 @@ $less->setVariables(array(
 	"border_radius_button" => $params->get('border_radius_button'),
 	"button_hover_style" => $buttonHoverStyle,
 	"hover_color" => $params->get('hover_color'),
-	'image_filters' => $imageFilters
+	'image_filters' => $imageFilters,
+	'boxShadow' => $boxShadow,
 ));
 
 $less->compileFile("modules/mod_articles_news_load_more/less/loadMore.less", "modules/mod_articles_news_load_more/css/loadMore.css");
@@ -77,7 +94,15 @@ $document->addScript('/modules/mod_articles_news_load_more/js/wow.min.js');
 // Get params
 
 $count    = $params->get('count');
-$categoryID = $params->get('catid');
+
+$categoryIDs = $params->get('catid');
+$catsString = "";
+foreach($categoryIDs as $catid){
+	$catsString .= $catid.",";
+}
+$catsString=rtrim($catsString,", ");
+
+//$categoryID = $params->get('catid');
 $ordering = $params->get('ordering');
 $orderingDirection = $params->get('direction');
 $spotlight = $params->get('article_spotlight');
@@ -101,7 +126,8 @@ $readMoreStyle = $params->get('readmore_style');
 $readMoreText = $params->get('readmore_text');
 $readMoreIconSize = $params->get('readmore_icon_size');
 $textTrigger = $params->get('text_trigger');
-
+$dateTrigger = $params->get('date_trigger');
+$dateFormat = $params->get('dateformat');
 
 if($readMoreText != ''){
 	$readMoreIconSize = '';
@@ -121,6 +147,7 @@ $list            = ModArticlesNewsLoadMoreHelper::getList($params,$count);
 
 // Get base link
 $item = $list[0];
+
 $id = $item->catid;
 $replaceSlug = "?id=".$id;
 $baseLink = str_replace($replaceSlug, "", $item->link);

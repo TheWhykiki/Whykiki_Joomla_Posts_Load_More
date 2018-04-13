@@ -24,6 +24,7 @@ $orderingDirection = $ordering." ".$direction;
 
 $page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH);
 $categoryID = $app->input->post->get('category');
+$categories = $_POST["catsString"];
 $spotlight = $app->input->post->get('spotlight');
 $baseLink = $_POST['baseLink'];
 $linkTitles = $app->input->post->get('linkTitles');
@@ -46,6 +47,8 @@ $columnsDesktop = $app->input->post->get('columnsDesktop');
 $readMoreStylePost = $_POST['readMoreStylePost'];
 $readMoreText  = $app->input->post->get('readMoreText');
 $textTrigger  = $app->input->post->get('textTrigger');
+$dateTrigger  = $app->input->post->get('dateTrigger');
+$dateFormat  = $app->input->post->get('dateFormat');
 
 //throw HTTP error if page number is not valid
 if(!is_numeric($page_number)){
@@ -59,16 +62,17 @@ $position = (($page_number-1) * $item_per_page);
 
 //fetch records using page position and item per page.
 $query = $db->getQuery(true);
-
+$categories = 'catid IN ('.$categories.')';
 if($spotlight == 1){
     $queryID = $db->getQuery(true);
     $queryID->select('id');
     $queryID->from($db->quoteName('#__content'));
-    $queryID->where($db->quoteName('catid')." = ".$db->quote($categoryID));
+	$queryID->where($categories);
     $queryID->order($orderingDirection);
     $db->setQuery($queryID);
     $lastID = $db->loadResult();
 }
+
 
 
 $query->select('a.*, b.*');
@@ -77,7 +81,8 @@ $query->join('LEFT', $db->quoteName('#__fields_values', 'b') . ' ON (' . $db->qu
 if($spotlight == 1){
     $query->where($db->quoteName('id')." != ".$db->quote($lastID));
 }
-$query->where($db->quoteName('catid')." = ".$db->quote($categoryID));
+//$query->where($db->quoteName('catid')." = ".$db->quote($categoryID));
+$query->where($categories);
 $query->order($orderingDirection);
 $query->setLimit($item_per_page);
 $db->setQuery($query,$position,$item_per_page);
@@ -124,7 +129,7 @@ foreach (array_chunk($row, $columnsDesktop) as $items): ?>
             $introImage = $images->image_intro;
             $introText = $item['introtext'];
 			$date = $item['publish_up'];
-			$date = date('d.m.Y',strtotime($date));
+	        $date = date($dateFormat,strtotime($date));
             $slug = $item['id'] . '-' . $item['alias'];
             $link = $baseLink."/".$slug;
         ?>
@@ -136,17 +141,20 @@ foreach (array_chunk($row, $columnsDesktop) as $items): ?>
                     <?php if($imageFlag == 1): ?>
 					<img class="blogImage blogImageLarger" src="/<?php echo $introImage; ?>" />
                     <?php endif; ?>
-					<p class="newsDate"><?php echo $date; ?></p>
+				<?php if($dateTrigger == 1): ?>
+                    <p class="newsDate"><?php echo $date; ?></p>
+				<?php endif; ?>
                 
 					<div class="blogItemText">
                         
                         <?php if($titleFlag == 1): ?>
                             <?php if($linkTitles == 1): ?>
-                                <a class="<?php echo $item['value']; ?>" href="<?php echo $link; ?>">
-                                    <h3 class="blogHeadlinePost">
-                                        <?php echo $item['title']; ?>
-                                    </h3>
-                                </a>
+                                <h3 class="blogHeadlinePost">
+                                    <a class="<?php echo $item['value']; ?>" href="<?php echo $link; ?>">
+
+                                            <?php echo $item['title']; ?>
+                                    </a>
+                                </h3>
                             <?php else: ?>
                                     <h3 class="blogHeadlinePost">
                                         <?php echo $item['title']; ?>
