@@ -96,11 +96,6 @@ $document->addScript('/modules/mod_articles_news_load_more/js/wow.min.js');
 $count    = $params->get('count');
 
 $categoryIDs = $params->get('catid');
-$catsString = "";
-foreach($categoryIDs as $catid){
-	$catsString .= $catid.",";
-}
-$catsString=rtrim($catsString,", ");
 
 //$categoryID = $params->get('catid');
 $ordering = $params->get('ordering');
@@ -128,6 +123,7 @@ $readMoreIconSize = $params->get('readmore_icon_size');
 $textTrigger = $params->get('text_trigger');
 $dateTrigger = $params->get('date_trigger');
 $dateFormat = $params->get('dateformat');
+$moduleID = $module->id;
 
 if($readMoreText != ''){
 	$readMoreIconSize = '';
@@ -147,21 +143,17 @@ $list            = ModArticlesNewsLoadMoreHelper::getList($params,$count);
 $menuItem            = ModArticlesNewsLoadMoreHelper::getMenuItems($params);
 
 // Get base link
+
 $item = $list[0];
 $id = $item->catid;
 $replaceSlug = "?id=".$id;
 
 if($params->get('base_item_trigger') == 0){
-	$baseLink = str_replace($replaceSlug, "", $item->link);
+	$menuItem = str_replace($replaceSlug, "", $item->link);
 }
 else{
-	$baseLink = "/".$menuItem;
+	$menuItem = $menuItem;
 }
-
-
-
-$slug = $item->id . '-' . $item->alias;
-$link = $baseLink."/".$slug;
 
 
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');

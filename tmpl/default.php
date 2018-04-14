@@ -39,28 +39,8 @@ jQuery(document).ready(function(){
             var settings = jQuery.extend({
                 loading_gif_url	: '/modules/mod_articles_news_load_more/images/ajax-loader.gif', //url to loading gif
                 data_url 		: '/modules/mod_articles_news_load_more/tmpl/ajax.php', //url to PHP page
-                ordering: '<?php echo $ordering; ?>',
-                direction: '<?php echo $orderingDirection; ?>',
-                spotlight: '<?php echo $spotlight; ?>',
-                catsString: '<?php echo $catsString; ?>',
-                articleCount: '<?php echo $count; ?>',
-                baseLink: '<?php echo $baseLink; ?>',
-                titleFlag: '<?php echo $titleFlag; ?>',
-                imageFlag: '<?php echo $imageFlag; ?>',
-                linkTitles: '<?php echo $link_titles; ?>',
-                textLength: '<?php echo $textLength; ?>',
-                animationFlag: '<?php echo $animationFlag; ?>',
-                animationPosts: '<?php echo $animationPosts; ?>',
-                columnsMobile: '<?php echo $columnsMobile; ?>',
-                columnsDesktop: '<?php echo $columnsDesktop; ?>',
-                animationSpeedPost: '<?php echo $animationSpeedPost; ?>',
-                animationDelayPost: '<?php echo $animationDelayPost; ?>',
-                readMoreStylePost: '<?php echo $readMoreStylePost; ?>',
-                readMoreIconSize: '<?php echo $readMoreIconSize; ?>',
-                readMoreText: '<?php echo $readMoreText; ?>',
-                textTrigger: '<?php echo $textTrigger; ?>',
-                dateTrigger: '<?php echo $dateTrigger; ?>',
-                dateFormat: '<?php echo $dateFormat; ?>',
+                menuItem: '<?php echo $menuItem; ?>',
+                moduleID: '<?php echo $moduleID; ?>',
                 start_page 		: 1 //initial page
             }, options);
 
@@ -106,28 +86,8 @@ jQuery(document).ready(function(){
                 jQuery.post( settings.data_url, 
                     {
                         'page': settings.start_page,
-                        'category': settings.category,
-                        'count':settings.articleCount,
-                        'ordering': settings.ordering,
-                        'direction': settings.direction,
-                        'spotlight': settings.spotlight,
-                        'baseLink': settings.baseLink,
-                        'titleFlag': settings.titleFlag,
-                        'linkTitles': settings.linkTitles,
-                        'imageFlag': settings.imageFlag,
-                        'textLength': settings.textLength,
-                        'animationFlag': settings.animationFlag,
-                        'animationPosts': settings.animationPosts,
-                        'animationDelayPost': settings.animationDelayPost,
-                        'animationSpeedPost': settings.animationSpeedPost,
-                        'columnsDesktop': settings.columnsDesktop,
-                        'readMoreStylePost': settings.readMoreStylePost,
-                        'readMoreText': settings.readMoreText,
-                        'readMoreIconSize': settings.readMoreIconSize,
-                        'textTrigger': settings.textTrigger,
-                        'catsString': settings.catsString,
-                        'dateTrigger': settings.dateTrigger,
-                        'dateFormat': settings.dateFormat
+                        'menuItem': settings.menuItem,
+                        'moduleID':settings.moduleID
 
                     }, 
                             

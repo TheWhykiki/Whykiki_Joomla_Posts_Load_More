@@ -8,12 +8,22 @@ require_once ( JPATH_BASE .'/includes/framework.php' );
 $app = JFactory::getApplication('site');
 $db = JFactory::getDbo();
 
+// Get module params
+
+$moduleID = $app->input->post->get('moduleID');
+$moduleQuery = $db->getQuery(true);
+$moduleQuery->select('a.*');
+$moduleQuery->from($db->quoteName('#__modules', 'a'));
+$moduleQuery->where($db->quoteName('id') . ' = '. $db->quote($moduleID));
+$db->setQuery($moduleQuery);
+$modules = $db->loadObject();
+$params = json_decode($modules->params);
 
 
-$ordering = $app->input->post->get('ordering');
+$ordering = $params->ordering;
 $ordering = str_replace("a.", "", $ordering);
 
-$directionState = $app->input->post->get('direction');
+$directionState = $params->direction;
 if($directionState == 0){
     $direction = 'ASC';
 }
@@ -23,18 +33,25 @@ if($directionState == 1){
 $orderingDirection = $ordering." ".$direction;
 
 $page_number = filter_var($_POST["page"], FILTER_SANITIZE_NUMBER_INT, FILTER_FLAG_STRIP_HIGH);
-$categoryID = $app->input->post->get('category');
-$categories = $_POST["catsString"];
-$spotlight = $app->input->post->get('spotlight');
-$baseLink = $_POST['baseLink'];
-$linkTitles = $app->input->post->get('linkTitles');
-$titleFlag = $app->input->post->get('titleFlag');
-$imageFlag = $app->input->post->get('imageFlag');
-$textLength = $app->input->post->get('textLength');
-$animationFlag = $app->input->post->get('animationFlag');
-$animationPosts = $app->input->post->get('animationPosts');
-$animationDelayPost = $app->input->post->get('animationDelayPost');
-$animationSpeedPost = $app->input->post->get('animationSpeedPost');
+
+$categoryIDs = $params->catid;
+$catsString = "";
+foreach($categoryIDs as $catid){
+	$catsString .= $catid.",";
+}
+$catsString=rtrim($catsString,", ");
+$categories = $catsString;
+
+$spotlight = $params->article_spotlight;
+
+$linkTitles = $params->link_titles;
+$titleFlag = $params->item_title;
+$imageFlag = $params->image;
+$textLength = $params->text_length;
+$animationFlag = $params->animation;
+$animationPosts = $params->animation_posts;
+$animationDelayPost = $params->animation_delay_posts;
+$animationSpeedPost = $params->animation_speed_posts;
 
 if($animationFlag == 1){
     $animationClass = "wow animate ".$animationPosts;
@@ -43,19 +60,30 @@ else{
     $animationClass = "";
 }
 
-$columnsDesktop = $app->input->post->get('columnsDesktop');
-$readMoreStylePost = $_POST['readMoreStylePost'];
-$readMoreText  = $app->input->post->get('readMoreText');
-$textTrigger  = $app->input->post->get('textTrigger');
-$dateTrigger  = $app->input->post->get('dateTrigger');
-$dateFormat  = $app->input->post->get('dateFormat');
+$columnsDesktop = $params->columns_desktop;
+$readMoreStyle = $params->readmore_style;
+$readMoreText  =  $params->readmore_text;
+$textTrigger  =  $params->text_trigger;
+$dateTrigger  =  $params->date_trigger;
+$dateFormat  =  $params->dateformat;
+$readMoreIconSize = $params->readmore_icon_size;
+if($readMoreText != ''){
+	$readMoreIconSize = '';
+}
+
+if($readMoreStyle == 'none'){
+	$readMoreStylePost = "";
+}
+else{
+	$readMoreStylePost = '<i class="fas '.$readMoreIconSize.' fa fa-'.$readMoreStyle.'"></i>';
+}
 
 //throw HTTP error if page number is not valid
 if(!is_numeric($page_number)){
     header('HTTP/1.1 500 Invalid page number!');
     exit;
 }
-$item_per_page = $app->input->post->get('count');
+$item_per_page = $params->count;
 
 //get current starting point of records
 $position = (($page_number-1) * $item_per_page);
@@ -127,14 +155,22 @@ foreach (array_chunk($row, $columnsDesktop) as $items): ?>
 <div class="row loadMoreRow">
     <?php foreach ($items as $item): ?>
         <?php
-            // Vars
-            $images = json_decode($item['images']);
-            $introImage = $images->image_intro;
-            $introText = $item['introtext'];
-			$date = $item['publish_up'];
-	        $date = date($dateFormat,strtotime($date));
-            $slug = $item['id'] . '-' . $item['alias'];
-            $link = $baseLink."/".$slug;
+	    // Vars
+	    setlocale (LC_ALL, 'de_DE');
+	    $images = json_decode($item['images']);
+	    $introImage = $images->image_intro;
+	    $introText = $item['introtext'];
+	    $date = $item['publish_up'];
+	    $timestamp = strtotime($date);
+	    //setlocale(LC_TIME, "en_GB");
+	    $date =  strftime($dateFormat, $timestamp);
+	    $slug = $item['id'] . '-' . $item['alias'];
+	    $replaceSlug = "?id=".$item['id'];
+	    $menuItem  = $app->input->post->get('menuItem');
+
+	    $baseLink = "/".$menuItem;
+
+	    $link = $baseLink."/".$slug;
         ?>
             
 
@@ -142,7 +178,7 @@ foreach (array_chunk($row, $columnsDesktop) as $items): ?>
         <div <?php if($animationFlag == 1 && $animationSpeedPost != ""): ?>data-wow-duration="<?php echo $animationSpeedPost; ?>"<?php endif; ?> <?php if($animationFlag == 1 && $animationDelayPost != ""): ?>data-wow-delay="<?php echo $animationDelayPost; ?>"<?php endif; ?> class="<?php echo $animationClass; ?> col-xs-<?php echo $colPhone; ?> col-sm-<?php echo $colTablet; ?> col-md-<?php echo $colIndicator; ?>  singleBlogPost">
 			<div class="blogInner">
                     <?php if($imageFlag == 1): ?>
-					<img class="blogImage blogImageLarger" src="/<?php echo $introImage; ?>" />
+					<img class="blogImage blogImageLarger" src="<?php echo $introImage; ?>" />
                     <?php endif; ?>
 				<?php if($dateTrigger == 1): ?>
                     <p class="newsDate"><?php echo $date; ?></p>
