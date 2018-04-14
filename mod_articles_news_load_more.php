@@ -71,6 +71,7 @@ $less->setVariables(array(
 	"border_color" => $params->get('border_color'),
 	"border_width" => $params->get('border_width'),
 	"border_style" => $params->get('border_style'),
+	"border_style_loadmore" => $params->get('border_style_loadmore'),
 	"color_button" => $params->get('color_button'),
 	"font_color_button" => $params->get('font_color_button'),
 	"button_font_size" => $params->get('button_font_size'),

@@ -7,7 +7,7 @@
 	<license>GNU General Public License version 2 or later;</license>
 	<authorEmail>info@whykiki.de</authorEmail>
 	<authorUrl>quasilectrisches-medieninstitut.de</authorUrl>
-	<version>1.0.5</version>
+	<version>1.0.7</version>
 	<version>1.0.5date</version>
 	<description>MOD_ARTICLES_NEWS_LOAD_MORE_DESCRIPTION</description>
 	<updateservers>
@@ -296,7 +296,56 @@
 					<option value="fa-5x">5-fach</option>
 				</field>
 
-				<field type="spacer" showon="box_shadow:1" label="MOD_ARTICLES_NEWS_LOAD_MORE_HEADLINE_BORDER_RADIUS" />
+				<field type="spacer" label="MOD_ARTICLES_NEWS_LOAD_MORE_HEADLINE_POSTS" />
+
+
+				<field
+						name="post_background"
+						type="color"
+						default="rgba(255, 255, 255, 1)"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_BG_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_POST_TEASER_BG_DESC"
+				>
+				</field>
+
+				<field
+						name="post_font_color"
+						type="color"
+						default="rgba(0, 0, 0, 0.73)"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_DESC"
+				>
+				</field>
+
+				<field
+						name="post_font_size_text"
+						type="text"
+						default="14px"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_SIZE_TEXT_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_SIZE_TEXT_DESC"
+				>
+				</field>
+
+				<field
+						name="post_font_color_headline"
+						type="color"
+						default="rgba(255, 0, 0, 1)"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_HEADLINE_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_HEADLINE_DESC"
+				>
+				</field>
+
+				<field
+						name="post_font_size_headline"
+						type="text"
+						default="16px"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_SIZE_HEADLINE_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_SIZE_HEADLINE_DESC"
+				>
+				</field>
 
 				<field
 						name="border_radius"
@@ -390,13 +439,28 @@
 				</field>
 
 				<field
-					name="border_width_button"
-					type="text"
-					default="2px"
-					label="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_WIDTH_BUTTON_LABEL"
-					description="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_WIDTH_BUTTON_DESC"
-					showon="loading_type:1"
-					>
+						name="border_width_button"
+						type="text"
+						default="2px"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_WIDTH_BUTTON_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_WIDTH_BUTTON_DESC"
+						showon="loading_type:1"
+				>
+				</field>
+
+				<field name="border_style_loadmore" type="list" default="solid" label="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_STYLE_LABEL" description="MOD_ARTICLES_NEWS_LOAD_MORE_BORDER_STYLE_DESC">
+					<option value="solid">Solid</option>
+					<option value="dotted">Dotted</option>
+					<option value="dashed">Dashed</option>
+					<option value="double">Double</option>
+					<option value="groove">Groove</option>
+					<option value="ridge">Ridge</option>
+					<option value="inset">Inset</option>
+					<option value="outset">Outset</option>
+					<option value="initial">Initial</option>
+					<option value="inherit">INherit</option>
+					<option value="none">None</option>
+
 				</field>
 
 				<field
@@ -428,57 +492,6 @@
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_BUTTON_HOVER_VALUE_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_BUTTON_HOVER_VALUE_DESC"
 						showon="loading_type:1"
-				>
-				</field>
-
-				<field type="spacer" label="MOD_ARTICLES_NEWS_LOAD_MORE_HEADLINE_POSTS" />
-
-
-				<field
-						name="post_background"
-						type="color"
-						default="rgba(255, 255, 255, 1)"
-						format="rgba"
-						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_BG_LABEL"
-						description="MOD_ARTICLES_NEWS_LOAD_POST_TEASER_BG_DESC"
-				>
-				</field>
-
-				<field
-						name="post_font_color"
-						type="color"
-						default="rgba(0, 0, 0, 0.73)"
-						format="rgba"
-						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_LABEL"
-						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_DESC"
-				>
-				</field>
-
-				<field
-						name="post_font_size_text"
-						type="text"
-						default="14px"
-						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_SIZE_TEXT_LABEL"
-						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_SIZE_TEXT_DESC"
-				>
-				</field>
-
-				<field
-						name="post_font_color_headline"
-						type="color"
-						default="rgba(255, 0, 0, 1)"
-						format="rgba"
-						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_HEADLINE_LABEL"
-						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_COLOR_HEADLINE_DESC"
-				>
-				</field>
-
-				<field
-						name="post_font_size_headline"
-						type="text"
-						default="16px"
-						label="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_SIZE_HEADLINE_LABEL"
-						description="MOD_ARTICLES_NEWS_LOAD_MORE_POST_FONT_SIZE_HEADLINE_DESC"
 				>
 				</field>
 

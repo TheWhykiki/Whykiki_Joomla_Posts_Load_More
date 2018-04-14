@@ -132,7 +132,7 @@
 }
 
 #loadMoreButton span{
-  border: @border_width_button @border_style @border_color_button;
+  border: @border_width_button @border_style_loadmore @border_color_button;
   font-size: @button_font_size;
   font-weight: 400;
   color: @font_color_button;
@@ -140,6 +140,9 @@
   background: @color_button;
   border-radius: @border_radius_button;
   display: block;
+  box-shadow: @boxShadow;
+  -webkit-box-shadow: @boxShadow;
+  -moz-box-shadow: @boxShadow;
 }
 
 #loadMoreButton span:hover{
