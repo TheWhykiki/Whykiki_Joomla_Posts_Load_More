@@ -7,8 +7,7 @@
 	<license>GNU General Public License version 2 or later;</license>
 	<authorEmail>info@whykiki.de</authorEmail>
 	<authorUrl>quasilectrisches-medieninstitut.de</authorUrl>
-	<version>1.0.7</version>
-	<version>1.0.5date</version>
+	<version>1.0.8</version>
 	<description>MOD_ARTICLES_NEWS_LOAD_MORE_DESCRIPTION</description>
 	<updateservers>
 		<server type="extension" name="News Articles Load More" priority="1">http://downloads.whykiki.rocks/updateLoadMore.xml</server>
@@ -413,6 +412,17 @@
 						format="rgba"
 						label="MOD_ARTICLES_NEWS_LOAD_MORE_FONT_COLOR_BUTTON_LABEL"
 						description="MOD_ARTICLES_NEWS_LOAD_MORE_FONT_COLOR_BUTTON_DESC"
+						showon="loading_type:1"
+				>
+				</field>
+
+				<field
+						name="font_hover_color_button"
+						type="color"
+						default="rgba(0, 0, 0, 1)"
+						format="rgba"
+						label="MOD_ARTICLES_NEWS_LOAD_MORE_FONT_HOVER_COLOR_BUTTON_LABEL"
+						description="MOD_ARTICLES_NEWS_LOAD_MORE_FONT_HOVER_COLOR_BUTTON_DESC"
 						showon="loading_type:1"
 				>
 				</field>
