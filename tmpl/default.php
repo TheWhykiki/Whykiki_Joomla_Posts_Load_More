@@ -63,9 +63,9 @@ jQuery(document).ready(function(){
                 var scrollerHeight = jQuery( '.blogInner' ).height();
                 console.log(scrollerHeight);
                 console.log('Trig ' + offsetTop);
-                var offsetter = parseInt(jQuery(window).scrollTop()) + parseInt(scrollerHeight*10);
+                var offsetter = parseInt(jQuery(window).scrollTop()) + parseInt(scrollerHeight*3);
 
-                console.log('Scroll ' + offsetter);
+                console.log('Scroll ' + offsetter + '> Offset Top' + offsetTop );
 
                 if( offsetter >= offsetTop){ //scrolled to bottom of the page
                     contents(el, settings); //load content chunk
